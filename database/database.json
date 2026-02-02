@@ -1,0 +1,11 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "fullName": "Bjorn Jansen",
+            "email": "BJan@su.edu",
+            "calorieGoal": 2000,
+            "weekStart": 1
+        }
+    ]
+}
