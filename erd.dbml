@@ -1,0 +1,88 @@
+Table user {
+    id int [pk, increment]
+    fullName string
+    email string
+    calorieGoal int
+    weekStart int [ref:> day.id]
+}
+
+Table plan {
+    id int [pk, increment]
+    name string
+    userId int [ref:> user.id]
+}
+
+Table planMeals {
+    id int [pk, increment]
+    planId int [ref:> plan.id]
+    mealId int [ref:> meal.id]
+    dayId int [ref:> day.id]
+    timeSlotId int [ref:> timeSlot.id]
+}
+
+Table timeSlot {
+    id int [pk, increment]
+    name string
+    userId int [ref:> user.id]
+}
+
+Table meal {
+    id int [pk, increment]
+    name string
+    userId int [ref:> user.id]
+}
+
+Table mealFoods {
+    id int [pk, increment]
+    mealId int [ref:> meal.id]
+    foodId int [ref:> food.id]
+    qty decimal
+    unitId in [ref:> unit.id]
+}
+
+Table food {
+    id int [pk, increment]
+    name string
+    userId int [ref:> user.id]
+    isRecipe bool
+}
+
+Table nutrient {
+    id int [pk, increment]
+    name string
+}
+
+Table servingNutrients {
+    id int [pk, increment]
+    servingId int [ref:> serving.id]
+    nutrientId int [ref:> nutrient.id]
+    qtyPerServing decimal
+    unitId int [ref:> unit.id]
+}
+
+Table unit {
+    id int [pk, increment]
+    name string
+    abbreviation string
+}
+
+Table serving {
+    id int [pk, increment]
+    foodId int [ref:> food.id]
+    qty decimal
+    unitId int [ref:> unit.id]
+    calories int
+}
+
+Table day {
+    id int [pk, increment]
+    name string
+}
+
+Table recipeFoods {
+    id int [pk, increment]
+    recipeId int [ref:> food.id]
+    foodId int [ref:> food.id]
+    qty decimal
+    unitId in [ref:> unit.id]
+}
