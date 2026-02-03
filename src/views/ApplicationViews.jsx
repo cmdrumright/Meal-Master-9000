@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { Outlet, Route, Routes } from "react-router-dom";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -20,7 +21,7 @@ export const ApplicationViews = () => {
           </>
         }
       >
-        <Route index element={<>index</>} />
+        <Route index element={<>Welcome</>} />
       </Route>
     </Routes>
   );

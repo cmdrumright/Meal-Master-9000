@@ -32,7 +32,7 @@ export const Login = () => {
     <main className="auth-container">
       <section>
         <form className="auth-form" onSubmit={handleLogin}>
-          <h1 className="header">Learning Moments</h1>
+          <h1 className="header">Meal Master 9000</h1>
           <h2>Please sign in</h2>
           <fieldset className="auth-fieldset">
             <div>

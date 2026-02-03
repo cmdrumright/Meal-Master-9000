@@ -1,11 +1,18 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "fullName": "Bjorn Jansen",
-            "email": "BJan@su.edu",
-            "calorieGoal": 2000,
-            "weekStart": 1
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Bjorn Jansen",
+      "email": "BJan@su.edu",
+      "calorieGoal": 2000,
+      "weekStart": 1
+    },
+    {
+      "email": "thehedge@gmail.com",
+      "fullName": "Ryan Hedgemaster",
+      "calorieGoal": 0,
+      "weekStart": 1,
+      "id": 2
+    }
+  ]
 }
