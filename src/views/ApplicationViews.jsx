@@ -24,6 +24,7 @@ export const ApplicationViews = () => {
         }
       >
         <Route index element={<>Welcome</>} />
+        <Route path="meals" element={<>Meals</>} />
       </Route>
     </Routes>
   );
