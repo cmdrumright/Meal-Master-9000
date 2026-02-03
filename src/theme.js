@@ -3,8 +3,11 @@ import { red } from "@mui/material/colors";
 
 // Create a theme instance.
 export const theme = createTheme({
-  cssVariables: true,
+  cssVariables: {
+    colorSchemeSelector: "class",
+  },
   colorSchemes: {
+    light: true,
     dark: true,
   },
   palette: {

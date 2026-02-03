@@ -10,7 +10,7 @@ const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme} defaultMode="system">
     <BrowserRouter>
       <App />
     </BrowserRouter>
