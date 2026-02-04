@@ -1,16 +1,17 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { TopBar } from "../components/nav/TopBar";
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { Outlet, Route, Routes } from 'react-router-dom'
+import { TopBar } from '../components/nav/TopBar'
+import { MealList } from '../components/meals/MealList'
 
 export const ApplicationViews = () => {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({})
 
   useEffect(() => {
-    const localLearningUser = localStorage.getItem("meal-master_user");
-    const learningUserObject = JSON.parse(localLearningUser);
-    setCurrentUser(learningUserObject);
-  }, []);
+    const localLearningUser = localStorage.getItem('meal-master_user')
+    const learningUserObject = JSON.parse(localLearningUser)
+    setCurrentUser(learningUserObject)
+  }, [])
 
   return (
     <Routes>
@@ -24,8 +25,8 @@ export const ApplicationViews = () => {
         }
       >
         <Route index element={<>Welcome</>} />
-        <Route path="meals" element={<>Meals</>} />
+        <Route path="meals" element={<MealList currentUser={currentUser} />} />
       </Route>
     </Routes>
-  );
-};
+  )
+}
