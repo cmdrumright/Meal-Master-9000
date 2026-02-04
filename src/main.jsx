@@ -1,4 +1,4 @@
-import React from "react";
+import React, { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./App.jsx";
 import "./index.css";
@@ -10,9 +10,11 @@ const container = document.getElementById("root");
 const root = ReactDOM.createRoot(container);
 
 root.render(
-  <ThemeProvider theme={theme} defaultMode="system">
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </ThemeProvider>,
+  <StrictMode>
+    <ThemeProvider theme={theme} defaultMode="system">
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ThemeProvider>
+  </StrictMode>,
 );
