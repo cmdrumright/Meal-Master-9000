@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Outlet, Route, Routes } from "react-router-dom";
+import { TopBar } from "../components/nav/TopBar";
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -17,11 +18,13 @@ export const ApplicationViews = () => {
         path="/"
         element={
           <>
+            <TopBar currentUser={currentUser} />
             <Outlet />
           </>
         }
       >
         <Route index element={<>Welcome</>} />
+        <Route path="meals" element={<>Meals</>} />
       </Route>
     </Routes>
   );
