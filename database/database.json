@@ -16,35 +16,41 @@
     }
   ],
   "meals": [
-      {
-          "id": 1,
-          "name": "Chicken",
-          "userId": 1,
-          "calories": 2000
-      },
-      {
-          "id": 3,
-          "name": "Oatmeal",
-          "userId": 1,
-          "calories": 2000
-      },
-      {
-          "id": 4,
-          "name": "Oatmeal",
-          "userId": 1,
-          "calories": 2000
-      },
-      {
-          "id": 5,
-          "name": "Oatmeal",
-          "userId": 1,
-          "calories": 2000
-      },
-      {
-          "id": 6,
-          "name": "Oatmeal",
-          "userId": 1,
-          "calories": 2000
-      }
+    {
+      "id": 1,
+      "name": "Chicken",
+      "userId": 1,
+      "calories": 2000
+    },
+    {
+      "id": 3,
+      "name": "Oatmeal",
+      "userId": 1,
+      "calories": 2000
+    },
+    {
+      "id": 4,
+      "name": "Oatmeal",
+      "userId": 1,
+      "calories": 2000
+    },
+    {
+      "id": 5,
+      "name": "Oatmeal",
+      "userId": 1,
+      "calories": 2000
+    },
+    {
+      "id": 6,
+      "name": "Oatmeal",
+      "userId": 1,
+      "calories": 2000
+    },
+    {
+      "name": "test",
+      "calories": 12,
+      "userId": 1,
+      "id": 7
+    }
   ]
 }
