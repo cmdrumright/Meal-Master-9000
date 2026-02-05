@@ -29,19 +29,20 @@ export const NewMeal = ({ currentUser }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <FormControl>
+      <FormControl sx={{ m: 2 }}>
         <InputLabel htmlFor="mname">Meal Name</InputLabel>
         <Input
           autoFocus={true}
           id="mname"
           value={mealName}
           onChange={(e) => setMealName(e.target.value)}
+          required
         />
         <FormHelperText id="my-helper-text">
           Please enter your first name.
         </FormHelperText>
       </FormControl>
-      <FormControl>
+      <FormControl sx={{ m: 2 }}>
         <InputLabel htmlFor="calories">Calories</InputLabel>
         <Input
           id="calories"
@@ -53,7 +54,7 @@ export const NewMeal = ({ currentUser }) => {
           Please enter your last name.
         </FormHelperText>
       </FormControl>{' '}
-      <Button variant="contained" color="primary" type="submit">
+      <Button variant="contained" color="primary" type="submit" sx={{ m: 2 }}>
         Save
       </Button>
     </form>
