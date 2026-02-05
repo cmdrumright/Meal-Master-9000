@@ -17,10 +17,16 @@ export const MealList = ({ currentUser }) => {
 
   return (
     <>
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', m: 'auto' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-evenly',
+        }}
+      >
         {myMeals.map((meal) => {
           return (
-            <Card key={meal.id} sx={{ minWidth: 275, m: 1, flexGrow: 1 }}>
+            <Card key={meal.id} sx={{ minWidth: 275, m: 1 }}>
               <CardContent>
                 <Typography variant="h5" component="div">
                   {meal.name}
