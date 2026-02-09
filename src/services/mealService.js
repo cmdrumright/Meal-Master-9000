@@ -29,3 +29,12 @@ export const updateMeal = (mealObj) => {
     body: JSON.stringify(mealObj),
   })
 }
+
+export const deleteMeal = (mealId) => {
+  return fetch(`http://localhost:8088/meals/${mealId}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+}
