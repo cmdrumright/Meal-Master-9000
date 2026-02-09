@@ -17,12 +17,6 @@
   ],
   "meals": [
     {
-      "id": 1,
-      "name": "Chicken",
-      "userId": 1,
-      "calories": 2001
-    },
-    {
       "id": 3,
       "name": "Oatmeal",
       "userId": 1,
@@ -71,12 +65,6 @@
       "id": 10
     },
     {
-      "name": "we",
-      "calories": 0,
-      "userId": 1,
-      "id": 11
-    },
-    {
       "name": "test",
       "calories": 50,
       "userId": 1,
@@ -87,6 +75,12 @@
       "calories": 203,
       "userId": 2,
       "id": 13
+    },
+    {
+      "name": "meal 1",
+      "calories": 124,
+      "userId": 1,
+      "id": 14
     }
   ]
 }

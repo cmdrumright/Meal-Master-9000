@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getMyMeals } from '../../services/mealService'
+import { deleteMeal, getMyMeals } from '../../services/mealService'
 import { Box } from '@mui/material'
 
 import Card from '@mui/material/Card'
@@ -14,9 +14,17 @@ export const MealList = ({ currentUser }) => {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
+  const loadMeals = () => {
     getMyMeals(currentUser.id).then(setMyMeals)
+  }
+
+  useEffect(() => {
+    loadMeals()
   }, [currentUser])
+
+  const handleDelete = (mealId) => {
+    deleteMeal(mealId).then(() => loadMeals())
+  }
 
   return (
     <>
@@ -54,6 +62,9 @@ export const MealList = ({ currentUser }) => {
                   }}
                 >
                   edit
+                </Button>
+                <Button size="small" onClick={() => handleDelete(meal.id)}>
+                  delete
                 </Button>
               </CardActions>
             </Card>
