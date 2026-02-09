@@ -1,6 +1,13 @@
 import { useEffect, useState } from 'react'
 import { deleteMeal, getMyMeals } from '../../services/mealService'
-import { Box } from '@mui/material'
+import {
+  Box,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from '@mui/material'
 
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
@@ -11,6 +18,7 @@ import { useNavigate } from 'react-router-dom'
 
 export const MealList = ({ currentUser }) => {
   const [myMeals, setMyMeals] = useState([])
+  const [idToDelete, setIdToDelete] = useState(0)
 
   const navigate = useNavigate()
 
@@ -22,8 +30,13 @@ export const MealList = ({ currentUser }) => {
     loadMeals()
   }, [currentUser])
 
-  const handleDelete = (mealId) => {
-    deleteMeal(mealId).then(() => loadMeals())
+  const handleClose = () => {
+    setIdToDelete(0)
+  }
+
+  const handleDelete = () => {
+    deleteMeal(idToDelete).then(() => loadMeals())
+    setIdToDelete(0)
   }
 
   return (
@@ -63,7 +76,7 @@ export const MealList = ({ currentUser }) => {
                 >
                   edit
                 </Button>
-                <Button size="small" onClick={() => handleDelete(meal.id)}>
+                <Button size="small" onClick={() => setIdToDelete(meal.id)}>
                   delete
                 </Button>
               </CardActions>
@@ -71,6 +84,31 @@ export const MealList = ({ currentUser }) => {
           )
         })}
       </Box>
+
+      <Dialog
+        open={idToDelete != 0}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{'Please Confirm'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to permanently delete this meal?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleClose}>Keep</Button>
+          <Button
+            variant="contained"
+            color="warning"
+            onClick={handleDelete}
+            autoFocus
+          >
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
   )
 }

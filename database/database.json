@@ -41,18 +41,6 @@
       "calories": 2000
     },
     {
-      "name": "test",
-      "calories": 12,
-      "userId": 1,
-      "id": 7
-    },
-    {
-      "name": "brocoli",
-      "calories": 300,
-      "userId": 1,
-      "id": 8
-    },
-    {
       "name": "meal name",
       "calories": 23,
       "userId": 1,
@@ -63,12 +51,6 @@
       "calories": 12,
       "userId": 1,
       "id": 10
-    },
-    {
-      "name": "test",
-      "calories": 50,
-      "userId": 1,
-      "id": 12
     },
     {
       "name": "meal 1",
