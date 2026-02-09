@@ -7,9 +7,12 @@ import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
+import { useNavigate } from 'react-router-dom'
 
 export const MealList = ({ currentUser }) => {
   const [myMeals, setMyMeals] = useState([])
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     getMyMeals(currentUser.id).then(setMyMeals)
@@ -17,6 +20,14 @@ export const MealList = ({ currentUser }) => {
 
   return (
     <>
+      <Button
+        color="primary"
+        variant="contained"
+        sx={{ m: 1 }}
+        onClick={() => navigate('new')}
+      >
+        New Meal
+      </Button>
       <Box
         sx={{
           display: 'flex',
