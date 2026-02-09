@@ -4,6 +4,7 @@ import { Outlet, Route, Routes } from 'react-router-dom'
 import { TopBar } from '../components/nav/TopBar'
 import { MealList } from '../components/meals/MealList'
 import { NewMeal } from '../components/meals/NewMeal'
+import { EditMeal } from '../components/meals/EditMeal'
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -29,6 +30,12 @@ export const ApplicationViews = () => {
         <Route path="meals" element={<Outlet />}>
           <Route index element={<MealList currentUser={currentUser} />} />
           <Route path="new" element={<NewMeal currentUser={currentUser} />} />
+          <Route path=":mealId">
+            <Route
+              path="edit"
+              element={<EditMeal currentUser={currentUser} />}
+            />
+          </Route>
         </Route>
       </Route>
     </Routes>

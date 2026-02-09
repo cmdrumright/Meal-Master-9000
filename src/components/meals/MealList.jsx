@@ -47,7 +47,14 @@ export const MealList = ({ currentUser }) => {
                 </Typography>
               </CardContent>
               <CardActions>
-                <Button size="small">edit</Button>
+                <Button
+                  size="small"
+                  onClick={() => {
+                    navigate(`${meal.id}/edit`)
+                  }}
+                >
+                  edit
+                </Button>
               </CardActions>
             </Card>
           )
