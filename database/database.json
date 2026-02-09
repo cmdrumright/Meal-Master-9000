@@ -20,7 +20,7 @@
       "id": 1,
       "name": "Chicken",
       "userId": 1,
-      "calories": 2000
+      "calories": 2001
     },
     {
       "id": 3,
@@ -59,7 +59,7 @@
       "id": 8
     },
     {
-      "name": "",
+      "name": "meal name",
       "calories": 23,
       "userId": 1,
       "id": 9
@@ -77,10 +77,16 @@
       "id": 11
     },
     {
-      "name": "testt",
-      "calories": 0,
+      "name": "test",
+      "calories": 50,
       "userId": 1,
       "id": 12
+    },
+    {
+      "name": "meal 1",
+      "calories": 203,
+      "userId": 2,
+      "id": 13
     }
   ]
 }

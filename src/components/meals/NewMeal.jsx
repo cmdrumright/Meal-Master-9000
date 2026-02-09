@@ -39,7 +39,7 @@ export const NewMeal = ({ currentUser }) => {
           required
         />
         <FormHelperText id="my-helper-text">
-          Please enter your first name.
+          Please enter a name for the meal.
         </FormHelperText>
       </FormControl>
       <FormControl sx={{ m: 2 }}>
@@ -51,7 +51,7 @@ export const NewMeal = ({ currentUser }) => {
           onChange={(e) => setCalories(parseInt(e.target.value))}
         />
         <FormHelperText id="my-helper-text">
-          Please enter your last name.
+          Please enter calories for the meal.
         </FormHelperText>
       </FormControl>{' '}
       <Button variant="contained" color="primary" type="submit" sx={{ m: 2 }}>
