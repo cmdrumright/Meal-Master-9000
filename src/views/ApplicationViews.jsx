@@ -5,6 +5,7 @@ import { TopBar } from '../components/nav/TopBar'
 import { MealList } from '../components/meals/MealList'
 import { NewMeal } from '../components/meals/NewMeal'
 import { EditMeal } from '../components/meals/EditMeal'
+import { PlanList } from '../components/plans/PlanList'
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -36,6 +37,9 @@ export const ApplicationViews = () => {
               element={<EditMeal currentUser={currentUser} />}
             />
           </Route>
+        </Route>
+        <Route path="plans">
+          <Route index element={<PlanList currentUser={currentUser} />} />
         </Route>
       </Route>
     </Routes>
