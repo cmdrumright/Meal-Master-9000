@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { getMyPlans } from '../../services/planService'
+import { getMyPlans, savePlan } from '../../services/planService'
 import { getMyMeals } from '../../services/mealService'
 import {
   Box,
@@ -33,8 +33,27 @@ export const PlanList = ({ currentUser }) => {
     return Math.round(calorieTotal / 7)
   }
 
+  const handleNew = () => {
+    const newPlan = {
+      name: 'New Plan',
+      userId: currentUser.id,
+    }
+    savePlan(newPlan).then((data) => {
+      navigate(`${data.id}/edit`)
+    })
+  }
+
   return (
     <>
+      <Button
+        color="primary"
+        variant="contained"
+        sx={{ m: 1 }}
+        onClick={handleNew}
+      >
+        New Plan
+      </Button>
+
       <Box
         sx={{
           display: 'flex',
