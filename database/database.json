@@ -15,6 +15,82 @@
       "id": 2
     }
   ],
+  "plans": [
+    {
+      "id": 1,
+      "name": "Plan A",
+      "userId": "1"
+    },
+    {
+      "name": "Plan B",
+      "userId": 1,
+      "id": 2
+    }
+  ],
+  "days": [
+    {
+      "id": 1,
+      "name": "Monday"
+    },
+    {
+      "id": 2,
+      "name": "Tuesday"
+    },
+    {
+      "id": 3,
+      "name": "Wednesday"
+    },
+    {
+      "id": 4,
+      "name": "Thursday"
+    },
+    {
+      "id": 5,
+      "name": "Friday"
+    },
+    {
+      "id": 6,
+      "name": "Saturday"
+    },
+    {
+      "id": 7,
+      "name": "Sunday"
+    }
+  ],
+  "timeSlots": [
+    {
+      "id": 1,
+      "name": "Breakfast"
+    },
+    {
+      "id": 2,
+      "name": "Lunch"
+    },
+    {
+      "id": 3,
+      "name": "Dinner"
+    },
+    {
+      "id": 4,
+      "name": "Snack"
+    }
+  ],
+  "planMeals": [
+    {
+      "id": 1,
+      "planId": 1,
+      "mealId": 4,
+      "dayId": 1,
+      "timeSlotId": 1
+    },
+    {
+      "id": 2,
+      "planId": 1,
+      "mealId": 14,
+      "dayId": 1,
+      "timeSlotId": 2
+    }
+  ],
   "meals": [
     {
       "id": 3,
@@ -45,12 +121,6 @@
       "calories": 23,
       "userId": 1,
       "id": 9
-    },
-    {
-      "name": "weee",
-      "calories": 12,
-      "userId": 1,
-      "id": 10
     },
     {
       "name": "meal 1",
