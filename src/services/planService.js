@@ -11,7 +11,7 @@ export const savePlan = (newPlan) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(newPlan),
-  })
+  }).then((res) => res.json())
 }
 
 export const getPlanById = (planId) => {
