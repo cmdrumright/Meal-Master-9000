@@ -15,7 +15,7 @@ export const savePlan = (newPlan) => {
 }
 
 export const getPlanById = (planId) => {
-  return fetch(`http://localhost:8088/Plans/${planId}`).then((res) =>
+  return fetch(`http://localhost:8088/plans/${planId}`).then((res) =>
     res.json()
   )
 }

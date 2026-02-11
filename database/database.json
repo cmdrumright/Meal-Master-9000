@@ -19,12 +19,17 @@
     {
       "id": 1,
       "name": "Plan A",
-      "userId": "1"
+      "userId": 1
     },
     {
-      "name": "Plan B",
+      "name": "Plan C",
       "userId": 1,
       "id": 2
+    },
+    {
+      "name": "New Plan",
+      "userId": 1,
+      "id": 3
     }
   ],
   "days": [
