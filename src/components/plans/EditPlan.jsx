@@ -4,13 +4,22 @@ import {
   InputLabel,
   FormHelperText,
   Button,
+  Box,
+  Card,
+  CardContent,
+  Typography,
 } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { getPlanById, updatePlan } from '../../services/planService'
 import { useNavigate, useParams } from 'react-router-dom'
+import { getPlanMealsByPlanId } from '../../services/planMealService'
+import { getDays, getTimeSlots } from '../../services/dayService'
 
 export const EditPlan = ({ currentUser }) => {
   const [myPlan, setMyPlan] = useState({})
+  const [myPlanMeals, setMyPlanMeals] = useState([])
+  const [days, setDays] = useState([])
+  const [timeSlots, setTimeSlots] = useState([])
 
   const { planId } = useParams()
 
@@ -20,6 +29,9 @@ export const EditPlan = ({ currentUser }) => {
     getPlanById(planId).then((planObj) => {
       if (planObj.userId === currentUser?.id) {
         setMyPlan(planObj)
+        getPlanMealsByPlanId(planId).then(setMyPlanMeals)
+        getDays().then(setDays)
+        getTimeSlots().then(setTimeSlots)
       }
     })
   }, [currentUser])
@@ -59,6 +71,53 @@ export const EditPlan = ({ currentUser }) => {
           Save
         </Button>
       </form>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        {days.map((day) => {
+          return (
+            <div key={day.id}>
+              <Typography variant="h4" component="div">
+                {day.name}
+              </Typography>
+              <Box
+                key={day.id}
+                sx={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  justifyContent: 'space-evenly',
+                }}
+              >
+                {timeSlots.map((timeSlot) => {
+                  const mealInfo = myPlanMeals.find(
+                    (planMeal) =>
+                      planMeal.dayId === day.id &&
+                      planMeal.timeSlotId === timeSlot.id
+                  )
+                  return (
+                    <Card key={timeSlot.id} sx={{ minWidth: 100, m: 1 }}>
+                      <CardContent>
+                        <Typography variant="h5" component="div">
+                          {timeSlot.name}
+                        </Typography>
+                        <Typography variant="body2">
+                          {mealInfo?.meal.name}
+                        </Typography>
+                        <Typography variant="body2">
+                          {mealInfo?.meal.calories} calories
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  )
+                })}
+              </Box>
+            </div>
+          )
+        })}
+      </Box>
     </>
   )
 }

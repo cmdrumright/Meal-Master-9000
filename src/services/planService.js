@@ -21,7 +21,7 @@ export const getPlanById = (planId) => {
 }
 
 export const updatePlan = (planObj) => {
-  return fetch(`http://localhost:8088/Plans/${planObj.id}`, {
+  return fetch(`http://localhost:8088/plans/${planObj.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
