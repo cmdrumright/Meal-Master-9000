@@ -5,7 +5,7 @@ export const getMyPlans = (userId) => {
 }
 
 export const savePlan = (newPlan) => {
-  return fetch(`http://localhost:8088/Plans`, {
+  return fetch(`http://localhost:8088/plans`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ export const updatePlan = (planObj) => {
 }
 
 export const deletePlan = (planId) => {
-  return fetch(`http://localhost:8088/Plans/${planId}`, {
+  return fetch(`http://localhost:8088/plans/${planId}?_dependent=planMeals`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
