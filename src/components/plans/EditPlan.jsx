@@ -8,6 +8,7 @@ import {
   Card,
   CardContent,
   Typography,
+  Checkbox,
 } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { getPlanById, updatePlan } from '../../services/planService'
@@ -20,6 +21,7 @@ export const EditPlan = ({ currentUser }) => {
   const [myPlanMeals, setMyPlanMeals] = useState([])
   const [days, setDays] = useState([])
   const [timeSlots, setTimeSlots] = useState([])
+  const [selectedSlots, setSelectedSlot] = useState([])
 
   const { planId } = useParams()
 
@@ -49,6 +51,34 @@ export const EditPlan = ({ currentUser }) => {
     updatePlan(myPlan).then(() => {
       navigate(-1)
     })
+  }
+
+  // make a state to store checkboxes
+  // loop through checkboxes
+  // check if existing planMeal entry
+  // replace or delete existing entries
+  // add new entry if none
+
+  const toggleSlot = (dayId, slotId) => {
+    // copy array
+    let copy = [...selectedSlots]
+    // check if item exists
+    const foundIndex = selectedSlots.findIndex(
+      (slot) => slot.dayId === dayId && slot.slotId === slotId
+    )
+    if (foundIndex != -1) {
+      copy.splice(foundIndex, 1)
+    } else {
+      copy.push({ dayId: dayId, slotId: slotId })
+    }
+    setSelectedSlot(copy)
+  }
+
+  const isChecked = (dayId, slotId) => {
+    const foundIndex = selectedSlots.findIndex(
+      (slot) => slot.dayId === dayId && slot.slotId === slotId
+    )
+    return foundIndex != -1 ? true : false
   }
 
   return (
@@ -109,6 +139,15 @@ export const EditPlan = ({ currentUser }) => {
                         <Typography variant="body2">
                           {mealInfo?.meal.calories} calories
                         </Typography>
+                        <Checkbox
+                          checked={isChecked(day.id, timeSlot.id)}
+                          onChange={() => {
+                            toggleSlot(day.id, timeSlot.id)
+                          }}
+                          slotProps={{
+                            input: { 'aria-label': 'controlled' },
+                          }}
+                        />
                       </CardContent>
                     </Card>
                   )
