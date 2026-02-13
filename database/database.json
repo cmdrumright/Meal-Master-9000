@@ -17,14 +17,14 @@
   ],
   "plans": [
     {
-      "name": "New Plan",
-      "userId": 2,
-      "id": 4
-    },
-    {
       "name": "Week 1",
       "userId": 1,
       "id": 5
+    },
+    {
+      "name": "New Plan 2",
+      "userId": 2,
+      "id": 6
     }
   ],
   "days": [
@@ -134,12 +134,6 @@
       "calories": 500
     },
     {
-      "name": "meal 1",
-      "calories": 203,
-      "userId": 2,
-      "id": 13
-    },
-    {
       "name": "Chicken and Brocoli",
       "calories": 523,
       "userId": 1,
@@ -168,6 +162,18 @@
       "calories": 150,
       "userId": 1,
       "id": 18
+    },
+    {
+      "name": "casserol",
+      "calories": 610,
+      "userId": 2,
+      "id": 19
+    },
+    {
+      "name": "Cereal",
+      "calories": 420,
+      "userId": 2,
+      "id": 20
     }
   ]
 }

@@ -31,7 +31,7 @@ export const updateMeal = (mealObj) => {
 }
 
 export const deleteMeal = (mealId) => {
-  return fetch(`http://localhost:8088/meals/${mealId}`, {
+  return fetch(`http://localhost:8088/meals/${mealId}?_dependent=planMeals`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
