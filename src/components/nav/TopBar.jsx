@@ -97,6 +97,7 @@ export const TopBar = (currentUser) => {
           open={Boolean(anchorNav)}
           onClose={handleCloseNav}
         >
+          <MenuItem onClick={() => navigate('/')}>Current Plan</MenuItem>
           <MenuItem onClick={() => navigate('/meals')}>Meals</MenuItem>
           <MenuItem onClick={() => navigate('/plans')}>Plans</MenuItem>
         </Menu>

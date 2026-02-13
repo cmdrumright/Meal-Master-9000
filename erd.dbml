@@ -4,6 +4,7 @@ Table user {
     email string
     calorieGoal int
     weekStart int [ref:> day.id]
+    activePlanId int [ref:> plan.id]
 }
 
 Table plan {
