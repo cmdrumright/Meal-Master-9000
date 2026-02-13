@@ -9,6 +9,7 @@ export const Register = (props) => {
     fullName: '',
     calorieGoal: 0,
     weekStart: 1,
+    activePlanId: 0,
   })
   let navigate = useNavigate()
 
