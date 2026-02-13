@@ -1,11 +1,267 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "fullName": "Bjorn Jansen",
-            "email": "BJan@su.edu",
-            "calorieGoal": 2000,
-            "weekStart": 1
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Bjorn Jansen",
+      "email": "BJan@su.edu",
+      "calorieGoal": 2000,
+      "weekStart": 1,
+      "activePlanId": 5
+    },
+    {
+      "email": "thehedge@gmail.com",
+      "fullName": "Ryan Hedgemaster",
+      "calorieGoal": 0,
+      "weekStart": 1,
+      "id": 2,
+      "activePlanId": 0
+    }
+  ],
+  "plans": [
+    {
+      "name": "Week 2",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "New Plan 2",
+      "userId": 2,
+      "id": 6
+    },
+    {
+      "name": "Week 3",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "name": "Week 4",
+      "userId": 1,
+      "id": 8
+    }
+  ],
+  "days": [
+    {
+      "id": 1,
+      "name": "Monday"
+    },
+    {
+      "id": 2,
+      "name": "Tuesday"
+    },
+    {
+      "id": 3,
+      "name": "Wednesday"
+    },
+    {
+      "id": 4,
+      "name": "Thursday"
+    },
+    {
+      "id": 5,
+      "name": "Friday"
+    },
+    {
+      "id": 6,
+      "name": "Saturday"
+    },
+    {
+      "id": 7,
+      "name": "Sunday"
+    }
+  ],
+  "timeSlots": [
+    {
+      "id": 1,
+      "name": "Breakfast"
+    },
+    {
+      "id": 2,
+      "name": "Lunch"
+    },
+    {
+      "id": 3,
+      "name": "Dinner"
+    },
+    {
+      "id": 4,
+      "name": "Snack"
+    }
+  ],
+  "planMeals": [
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 1,
+      "timeSlotId": 1,
+      "id": 1
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 2,
+      "timeSlotId": 1,
+      "id": 2
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 7,
+      "timeSlotId": 1,
+      "id": 3
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 3,
+      "timeSlotId": 1,
+      "id": 4
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 4,
+      "timeSlotId": 1,
+      "id": 5
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 5,
+      "timeSlotId": 1,
+      "id": 6
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 6,
+      "timeSlotId": 1,
+      "id": 7
+    },
+    {
+      "planId": 5,
+      "mealId": 15,
+      "dayId": 1,
+      "timeSlotId": 2,
+      "id": 8
+    },
+    {
+      "planId": 5,
+      "mealId": 15,
+      "dayId": 2,
+      "timeSlotId": 2,
+      "id": 9
+    },
+    {
+      "planId": 5,
+      "mealId": 15,
+      "dayId": 3,
+      "timeSlotId": 2,
+      "id": 10
+    },
+    {
+      "planId": 7,
+      "mealId": 14,
+      "dayId": 2,
+      "timeSlotId": 2,
+      "id": 11
+    },
+    {
+      "planId": 7,
+      "mealId": 14,
+      "dayId": 3,
+      "timeSlotId": 2,
+      "id": 12
+    },
+    {
+      "planId": 7,
+      "mealId": 14,
+      "dayId": 4,
+      "timeSlotId": 2,
+      "id": 13
+    },
+    {
+      "planId": 8,
+      "mealId": 21,
+      "dayId": 1,
+      "timeSlotId": 3,
+      "id": 14
+    },
+    {
+      "planId": 8,
+      "mealId": 21,
+      "dayId": 2,
+      "timeSlotId": 3,
+      "id": 15
+    },
+    {
+      "planId": 8,
+      "mealId": 21,
+      "dayId": 3,
+      "timeSlotId": 3,
+      "id": 16
+    },
+    {
+      "planId": 8,
+      "mealId": 21,
+      "dayId": 4,
+      "timeSlotId": 3,
+      "id": 17
+    }
+  ],
+  "meals": [
+    {
+      "id": 6,
+      "name": "Oatmeal",
+      "userId": 1,
+      "calories": 500
+    },
+    {
+      "name": "Chicken and Brocoli",
+      "calories": 523,
+      "userId": 1,
+      "id": 14
+    },
+    {
+      "name": "Ham Sandwich",
+      "calories": 486,
+      "userId": 1,
+      "id": 15
+    },
+    {
+      "name": "Cereal",
+      "calories": 450,
+      "userId": 1,
+      "id": 16
+    },
+    {
+      "name": "Chocolate Covered Cashews",
+      "calories": 200,
+      "userId": 1,
+      "id": 17
+    },
+    {
+      "name": "Popcorn",
+      "calories": 150,
+      "userId": 1,
+      "id": 18
+    },
+    {
+      "name": "casserol",
+      "calories": 610,
+      "userId": 2,
+      "id": 19
+    },
+    {
+      "name": "Cereal",
+      "calories": 420,
+      "userId": 2,
+      "id": 20
+    },
+    {
+      "name": "Pasta",
+      "calories": 600,
+      "userId": 1,
+      "id": 21
+    }
+  ]
 }

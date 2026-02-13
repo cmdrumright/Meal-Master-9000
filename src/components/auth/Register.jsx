@@ -1,59 +1,60 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";
-import { createUser, getUserByEmail } from "../../services/userService";
+import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './Login.css'
+import { createUser, getUserByEmail } from '../../services/userService'
 
 export const Register = (props) => {
   const [user, setUser] = useState({
-    email: "",
-    fullName: "",
+    email: '',
+    fullName: '',
     calorieGoal: 0,
     weekStart: 1,
-  });
-  let navigate = useNavigate();
+    activePlanId: 0,
+  })
+  let navigate = useNavigate()
 
   const registerNewUser = () => {
     const newUser = {
       ...user,
-    };
+    }
 
     createUser(newUser).then((createdUser) => {
-      if (createdUser.hasOwnProperty("id")) {
+      if (createdUser.hasOwnProperty('id')) {
         localStorage.setItem(
-          "meal-master_user",
+          'meal-master_user',
           JSON.stringify({
             id: createdUser.id,
-          }),
-        );
+          })
+        )
 
-        navigate("/");
+        navigate('/')
       }
-    });
-  };
+    })
+  }
 
   const handleRegister = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     getUserByEmail(user.email).then((response) => {
       if (response.length > 0) {
         // Duplicate email. No good.
-        window.alert("Account with that email address already exists");
+        window.alert('Account with that email address already exists')
       } else {
         // Good email, create user.
-        registerNewUser();
+        registerNewUser()
       }
-    });
-  };
+    })
+  }
 
   const updateUser = (evt) => {
-    const copy = { ...user };
-    copy[evt.target.id] = evt.target.value;
-    setUser(copy);
-  };
+    const copy = { ...user }
+    copy[evt.target.id] = evt.target.value
+    setUser(copy)
+  }
 
   return (
     <main className="auth-container">
       <form className="auth-form" onSubmit={handleRegister}>
-        <h1 className="header">Learning Moments</h1>
+        <h1 className="header">Meal Master 9000</h1>
         <h2>Please Register</h2>
         <fieldset className="auth-fieldset">
           <div>
@@ -87,5 +88,5 @@ export const Register = (props) => {
         </fieldset>
       </form>
     </main>
-  );
-};
+  )
+}

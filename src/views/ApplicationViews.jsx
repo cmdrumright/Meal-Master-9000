@@ -1,14 +1,22 @@
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { Outlet, Route, Routes } from 'react-router-dom'
+import { TopBar } from '../components/nav/TopBar'
+import { MealList } from '../components/meals/MealList'
+import { NewMeal } from '../components/meals/NewMeal'
+import { EditMeal } from '../components/meals/EditMeal'
+import { PlanList } from '../components/plans/PlanList'
+import { EditPlan } from '../components/plans/EditPlan'
+import { CurrentPlan } from '../components/plans/CurrentPlan'
 
 export const ApplicationViews = () => {
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({})
 
   useEffect(() => {
-    const localLearningUser = localStorage.getItem("meal-master_user");
-    const learningUserObject = JSON.parse(localLearningUser);
-    setCurrentUser(learningUserObject);
-  }, []);
+    const localLearningUser = localStorage.getItem('meal-master_user')
+    const learningUserObject = JSON.parse(localLearningUser)
+    setCurrentUser(learningUserObject)
+  }, [])
 
   return (
     <Routes>
@@ -16,12 +24,30 @@ export const ApplicationViews = () => {
         path="/"
         element={
           <>
+            <TopBar currentUser={currentUser} />
             <Outlet />
           </>
         }
       >
-        <Route index element={<>index</>} />
+        <Route index element={<CurrentPlan currentUser={currentUser} />} />
+        <Route path="meals" element={<Outlet />}>
+          <Route index element={<MealList currentUser={currentUser} />} />
+          <Route path="new" element={<NewMeal currentUser={currentUser} />} />
+          <Route path=":mealId">
+            <Route
+              path="edit"
+              element={<EditMeal currentUser={currentUser} />}
+            />
+          </Route>
+        </Route>
+        <Route path="plans">
+          <Route index element={<PlanList currentUser={currentUser} />} />
+          <Route
+            path=":planId/edit"
+            element={<EditPlan currentUser={currentUser} />}
+          />
+        </Route>
       </Route>
     </Routes>
-  );
-};
+  )
+}
