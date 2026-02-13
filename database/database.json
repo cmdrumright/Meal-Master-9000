@@ -17,24 +17,14 @@
   ],
   "plans": [
     {
-      "id": 1,
       "name": "Week 1",
-      "userId": 1
-    },
-    {
-      "name": "Plan C",
       "userId": 1,
-      "id": 2
+      "id": 5
     },
     {
-      "name": "PLan f",
-      "userId": 1,
-      "id": 3
-    },
-    {
-      "name": "New Plan",
+      "name": "New Plan 2",
       "userId": 2,
-      "id": 4
+      "id": 6
     }
   ],
   "days": [
@@ -87,200 +77,53 @@
   ],
   "planMeals": [
     {
-      "planId": 1,
-      "mealId": 16,
+      "planId": 5,
+      "mealId": 6,
       "dayId": 1,
       "timeSlotId": 1,
       "id": 1
     },
     {
-      "planId": 1,
+      "planId": 5,
       "mealId": 6,
       "dayId": 2,
+      "timeSlotId": 1,
+      "id": 2
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 7,
+      "timeSlotId": 1,
+      "id": 3
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 3,
+      "timeSlotId": 1,
+      "id": 4
+    },
+    {
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 4,
       "timeSlotId": 1,
       "id": 5
     },
     {
-      "planId": 1,
+      "planId": 5,
       "mealId": 6,
-      "dayId": 7,
+      "dayId": 5,
       "timeSlotId": 1,
       "id": 6
     },
     {
-      "planId": 1,
-      "mealId": 16,
-      "dayId": 3,
+      "planId": 5,
+      "mealId": 6,
+      "dayId": 6,
       "timeSlotId": 1,
       "id": 7
-    },
-    {
-      "planId": 1,
-      "mealId": 6,
-      "dayId": 4,
-      "timeSlotId": 1,
-      "id": 8
-    },
-    {
-      "planId": 1,
-      "mealId": 16,
-      "dayId": 5,
-      "timeSlotId": 1,
-      "id": 9
-    },
-    {
-      "planId": 1,
-      "mealId": 6,
-      "dayId": 6,
-      "timeSlotId": 1,
-      "id": 10
-    },
-    {
-      "planId": 1,
-      "mealId": 15,
-      "dayId": 7,
-      "timeSlotId": 2,
-      "id": 11
-    },
-    {
-      "planId": 1,
-      "mealId": 15,
-      "dayId": 1,
-      "timeSlotId": 2,
-      "id": 12
-    },
-    {
-      "planId": 1,
-      "mealId": 15,
-      "dayId": 6,
-      "timeSlotId": 2,
-      "id": 13
-    },
-    {
-      "planId": 1,
-      "mealId": 15,
-      "dayId": 5,
-      "timeSlotId": 2,
-      "id": 14
-    },
-    {
-      "planId": 1,
-      "mealId": 15,
-      "dayId": 4,
-      "timeSlotId": 2,
-      "id": 15
-    },
-    {
-      "planId": 1,
-      "mealId": 15,
-      "dayId": 3,
-      "timeSlotId": 2,
-      "id": 16
-    },
-    {
-      "planId": 1,
-      "mealId": 15,
-      "dayId": 2,
-      "timeSlotId": 2,
-      "id": 17
-    },
-    {
-      "planId": 1,
-      "mealId": 14,
-      "dayId": 7,
-      "timeSlotId": 3,
-      "id": 18
-    },
-    {
-      "planId": 1,
-      "mealId": 14,
-      "dayId": 1,
-      "timeSlotId": 3,
-      "id": 19
-    },
-    {
-      "planId": 1,
-      "mealId": 14,
-      "dayId": 6,
-      "timeSlotId": 3,
-      "id": 20
-    },
-    {
-      "planId": 1,
-      "mealId": 14,
-      "dayId": 5,
-      "timeSlotId": 3,
-      "id": 21
-    },
-    {
-      "planId": 1,
-      "mealId": 14,
-      "dayId": 4,
-      "timeSlotId": 3,
-      "id": 22
-    },
-    {
-      "planId": 1,
-      "mealId": 14,
-      "dayId": 3,
-      "timeSlotId": 3,
-      "id": 23
-    },
-    {
-      "planId": 1,
-      "mealId": 14,
-      "dayId": 2,
-      "timeSlotId": 3,
-      "id": 24
-    },
-    {
-      "planId": 1,
-      "mealId": 17,
-      "dayId": 7,
-      "timeSlotId": 4,
-      "id": 25
-    },
-    {
-      "planId": 1,
-      "mealId": 17,
-      "dayId": 6,
-      "timeSlotId": 4,
-      "id": 26
-    },
-    {
-      "planId": 1,
-      "mealId": 17,
-      "dayId": 1,
-      "timeSlotId": 4,
-      "id": 27
-    },
-    {
-      "planId": 1,
-      "mealId": 17,
-      "dayId": 5,
-      "timeSlotId": 4,
-      "id": 28
-    },
-    {
-      "planId": 1,
-      "mealId": 17,
-      "dayId": 4,
-      "timeSlotId": 4,
-      "id": 29
-    },
-    {
-      "planId": 1,
-      "mealId": 17,
-      "dayId": 3,
-      "timeSlotId": 4,
-      "id": 30
-    },
-    {
-      "planId": 1,
-      "mealId": 17,
-      "dayId": 2,
-      "timeSlotId": 4,
-      "id": 31
     }
   ],
   "meals": [
@@ -289,12 +132,6 @@
       "name": "Oatmeal",
       "userId": 1,
       "calories": 500
-    },
-    {
-      "name": "meal 1",
-      "calories": 203,
-      "userId": 2,
-      "id": 13
     },
     {
       "name": "Chicken and Brocoli",
@@ -325,6 +162,18 @@
       "calories": 150,
       "userId": 1,
       "id": 18
+    },
+    {
+      "name": "casserol",
+      "calories": 610,
+      "userId": 2,
+      "id": 19
+    },
+    {
+      "name": "Cereal",
+      "calories": 420,
+      "userId": 2,
+      "id": 20
     }
   ]
 }
