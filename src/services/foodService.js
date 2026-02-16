@@ -11,7 +11,7 @@ export const saveFood = (newFood) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(newFood),
-  })
+  }).then((res) => res.json())
 }
 
 export const getFoodById = (foodId) => {

@@ -9,6 +9,8 @@ import { PlanList } from '../components/plans/PlanList'
 import { EditPlan } from '../components/plans/EditPlan'
 import { CurrentPlan } from '../components/plans/CurrentPlan'
 import { FoodList } from '../components/foods/FoodList'
+import { NewFood } from '../components/foods/NewFood'
+import { EditFood } from '../components/foods/EditFood'
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -50,6 +52,11 @@ export const ApplicationViews = () => {
         </Route>
         <Route path="foods" element={<Outlet />}>
           <Route index element={<FoodList currentUser={currentUser} />} />
+          <Route path="new" element={<NewFood currentUser={currentUser} />} />
+          <Route
+            path=":foodId/edit"
+            element={<EditFood currentUser={currentUser} />}
+          />
         </Route>
       </Route>
     </Routes>

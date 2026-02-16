@@ -6,7 +6,7 @@
       "email": "BJan@su.edu",
       "calorieGoal": 2000,
       "weekStart": 1,
-      "activePlanId": 7
+      "activePlanId": 5
     },
     {
       "email": "thehedge@gmail.com",
@@ -343,6 +343,16 @@
       "name": "Rolled Oats",
       "userId": 1,
       "id": 4
+    },
+    {
+      "name": "Rice",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "Pasta",
+      "userId": 1,
+      "id": 6
     }
   ],
   "servings": [
@@ -364,7 +374,7 @@
       "foodId": 2,
       "qty": 100,
       "unitId": 2,
-      "id": 1,
+      "id": 3,
       "calories": 100
     }
   ],
