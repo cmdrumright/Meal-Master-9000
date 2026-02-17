@@ -15,12 +15,17 @@ import { getFoodById, saveFood, updateFood } from '../../services/foodService'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getServingsByFood } from '../../services/servingService'
 import { Edit } from '@mui/icons-material'
+import { getAllUnits } from '../../services/unitService'
+import { getAllNutrients } from '../../services/nutrientService'
+import { DisplayServing } from '../servings/DisplayServing'
 
 export const FoodDetails = ({ currentUser }) => {
   const [foodObj, setFoodObj] = useState({})
   const [servings, setServings] = useState([])
   const [selectedServing, setSelectedServing] = useState()
   const [editName, setEditName] = useState(false)
+  const [units, setUnits] = useState([])
+  const [nutrients, setNutrients] = useState([])
 
   const { foodId } = useParams()
 
@@ -29,6 +34,11 @@ export const FoodDetails = ({ currentUser }) => {
   const reloadServings = () => {
     getServingsByFood(foodId).then(setServings)
   }
+
+  useEffect(() => {
+    getAllUnits().then(setUnits)
+    getAllNutrients().then(setNutrients)
+  }, [])
 
   useEffect(() => {
     if (currentUser.id) {
@@ -76,7 +86,7 @@ export const FoodDetails = ({ currentUser }) => {
         {editName ? (
           <form onSubmit={handleNameSubmit}>
             <FormControl sx={{ m: 2 }}>
-              <InputLabel htmlFor="mname">Food Name</InputLabel>
+              <InputLabel htmlFor="fname">Food Name</InputLabel>
               <Input
                 autoFocus={true}
                 id="fname"
@@ -115,36 +125,27 @@ export const FoodDetails = ({ currentUser }) => {
           label="Serving Size"
           onChange={(e) => setSelectedServing(e.target.value)}
         >
-          {servings.map((serving) => {
-            return (
-              <MenuItem key={serving.id} value={serving.id}>
-                {serving.qty} {serving.unitId}
-              </MenuItem>
-            )
-          })}
+          {servings
+            ? servings.map((serving) => {
+                return (
+                  <MenuItem key={serving.id} value={serving.id}>
+                    {serving.qty}{' '}
+                    {units.find((unit) => unit.id === serving.unitId).name}
+                  </MenuItem>
+                )
+              })
+            : ''}
         </Select>
       </FormControl>
-      {servings
-        ? servings
-            .find((serving) => serving?.id === selectedServing)
-            ?.servingNutrients.map((servingNutrient) => {
-              return (
-                <FormControl key={servingNutrient.id} sx={{ m: 2 }}>
-                  <InputLabel htmlFor="mname">Food Name</InputLabel>
-                  <Input
-                    autoFocus={true}
-                    id="mname"
-                    value={foodObj.name}
-                    onChange={handleChange}
-                    required
-                  />
-                  <FormHelperText id="my-helper-text">
-                    Please enter a name for the food.
-                  </FormHelperText>
-                </FormControl>
-              )
-            })
-        : ''}
+      {selectedServing ? (
+        <DisplayServing
+          serving={servings.find((serving) => serving.id === selectedServing)}
+          units={units}
+          nutrients={nutrients}
+        />
+      ) : (
+        ''
+      )}
     </Box>
   )
 }
