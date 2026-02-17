@@ -14,7 +14,7 @@
       "calorieGoal": 0,
       "weekStart": 1,
       "id": 2,
-      "activePlanId": 0
+      "activePlanId": 9
     }
   ],
   "plans": [
@@ -29,14 +29,14 @@
       "id": 6
     },
     {
-      "name": "Week 3",
-      "userId": 1,
-      "id": 7
-    },
-    {
       "name": "Week 4",
       "userId": 1,
       "id": 8
+    },
+    {
+      "name": "New Plan",
+      "userId": 2,
+      "id": 9
     }
   ],
   "days": [
@@ -90,55 +90,6 @@
   "planMeals": [
     {
       "planId": 5,
-      "mealId": 6,
-      "dayId": 1,
-      "timeSlotId": 1,
-      "id": 1
-    },
-    {
-      "planId": 5,
-      "mealId": 6,
-      "dayId": 2,
-      "timeSlotId": 1,
-      "id": 2
-    },
-    {
-      "planId": 5,
-      "mealId": 6,
-      "dayId": 7,
-      "timeSlotId": 1,
-      "id": 3
-    },
-    {
-      "planId": 5,
-      "mealId": 6,
-      "dayId": 3,
-      "timeSlotId": 1,
-      "id": 4
-    },
-    {
-      "planId": 5,
-      "mealId": 6,
-      "dayId": 4,
-      "timeSlotId": 1,
-      "id": 5
-    },
-    {
-      "planId": 5,
-      "mealId": 6,
-      "dayId": 5,
-      "timeSlotId": 1,
-      "id": 6
-    },
-    {
-      "planId": 5,
-      "mealId": 6,
-      "dayId": 6,
-      "timeSlotId": 1,
-      "id": 7
-    },
-    {
-      "planId": 5,
       "mealId": 15,
       "dayId": 1,
       "timeSlotId": 2,
@@ -157,27 +108,6 @@
       "dayId": 3,
       "timeSlotId": 2,
       "id": 10
-    },
-    {
-      "planId": 7,
-      "mealId": 14,
-      "dayId": 2,
-      "timeSlotId": 2,
-      "id": 11
-    },
-    {
-      "planId": 7,
-      "mealId": 14,
-      "dayId": 3,
-      "timeSlotId": 2,
-      "id": 12
-    },
-    {
-      "planId": 7,
-      "mealId": 14,
-      "dayId": 4,
-      "timeSlotId": 2,
-      "id": 13
     },
     {
       "planId": 8,
@@ -206,15 +136,107 @@
       "dayId": 4,
       "timeSlotId": 3,
       "id": 17
+    },
+    {
+      "planId": 9,
+      "mealId": 22,
+      "dayId": 1,
+      "timeSlotId": 4,
+      "id": 18
+    },
+    {
+      "planId": 9,
+      "mealId": 22,
+      "dayId": 7,
+      "timeSlotId": 4,
+      "id": 19
+    },
+    {
+      "planId": 9,
+      "mealId": 22,
+      "dayId": 2,
+      "timeSlotId": 4,
+      "id": 20
+    },
+    {
+      "planId": 9,
+      "mealId": 22,
+      "dayId": 3,
+      "timeSlotId": 4,
+      "id": 21
+    },
+    {
+      "planId": 9,
+      "mealId": 22,
+      "dayId": 4,
+      "timeSlotId": 4,
+      "id": 22
+    },
+    {
+      "planId": 9,
+      "mealId": 22,
+      "dayId": 5,
+      "timeSlotId": 4,
+      "id": 23
+    },
+    {
+      "planId": 9,
+      "mealId": 22,
+      "dayId": 6,
+      "timeSlotId": 4,
+      "id": 24
+    },
+    {
+      "planId": 9,
+      "mealId": 20,
+      "dayId": 1,
+      "timeSlotId": 1,
+      "id": 25
+    },
+    {
+      "planId": 9,
+      "mealId": 20,
+      "dayId": 7,
+      "timeSlotId": 1,
+      "id": 26
+    },
+    {
+      "planId": 9,
+      "mealId": 20,
+      "dayId": 2,
+      "timeSlotId": 1,
+      "id": 27
+    },
+    {
+      "planId": 9,
+      "mealId": 20,
+      "dayId": 3,
+      "timeSlotId": 1,
+      "id": 28
+    },
+    {
+      "planId": 9,
+      "mealId": 20,
+      "dayId": 4,
+      "timeSlotId": 1,
+      "id": 29
+    },
+    {
+      "planId": 9,
+      "mealId": 20,
+      "dayId": 5,
+      "timeSlotId": 1,
+      "id": 30
+    },
+    {
+      "planId": 9,
+      "mealId": 20,
+      "dayId": 6,
+      "timeSlotId": 1,
+      "id": 31
     }
   ],
   "meals": [
-    {
-      "id": 6,
-      "name": "Oatmeal",
-      "userId": 1,
-      "calories": 500
-    },
     {
       "name": "Chicken and Brocoli",
       "calories": 523,
@@ -262,6 +284,137 @@
       "calories": 600,
       "userId": 1,
       "id": 21
+    },
+    {
+      "name": "Crackers",
+      "calories": 210,
+      "userId": 2,
+      "id": 22
+    }
+  ],
+  "units": [
+    {
+      "name": "Serving",
+      "abbreviation": "serving",
+      "id": 1
+    },
+    {
+      "name": "Grams",
+      "abbreviation": "g",
+      "id": 2
+    },
+    {
+      "name": "Cups",
+      "abbreviation": "cups",
+      "id": 3
+    }
+  ],
+  "nutrients": [
+    {
+      "name": "Proteins",
+      "id": 1
+    },
+    {
+      "name": "Carbohydrates",
+      "id": 2
+    },
+    {
+      "name": "Fats",
+      "id": 3
+    }
+  ],
+  "foods": [
+    {
+      "name": "Chicken",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "name": "Brocoli",
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "name": "Black Beans",
+      "userId": 1,
+      "id": 3
+    },
+    {
+      "name": "Rolled Oats",
+      "userId": 1,
+      "id": 4
+    },
+    {
+      "name": "Rice",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "name": "Pasta",
+      "userId": 1,
+      "id": 6
+    }
+  ],
+  "servings": [
+    {
+      "foodId": 1,
+      "qty": 100,
+      "unitId": 2,
+      "id": 1,
+      "calories": 100
+    },
+    {
+      "foodId": 1,
+      "qty": 1,
+      "unitId": 3,
+      "id": 2,
+      "calories": 100
+    },
+    {
+      "foodId": 2,
+      "qty": 100,
+      "unitId": 2,
+      "id": 3,
+      "calories": 100
+    }
+  ],
+  "servingNutrients": [
+    {
+      "servingId": 1,
+      "nutrientId": 1,
+      "qty": 5,
+      "id": 1,
+      "unitId": 2
+    },
+    {
+      "servingId": 1,
+      "nutrientId": 2,
+      "qty": 6,
+      "id": 2,
+      "unitId": 2
+    },
+    {
+      "servingId": 1,
+      "nutrientId": 3,
+      "qty": 7,
+      "id": 3,
+      "unitId": 2
+    }
+  ],
+  "mealFoods": [
+    {
+      "mealId": 14,
+      "foodId": 1,
+      "qty": 100,
+      "id": 1,
+      "unitId": 2
+    },
+    {
+      "mealId": 14,
+      "foodId": 2,
+      "qty": 100,
+      "id": 2,
+      "unitId": 2
     }
   ]
 }
