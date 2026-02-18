@@ -361,14 +361,14 @@
       "qty": 100,
       "unitId": 2,
       "id": 1,
-      "calories": 100
+      "calories": 103
     },
     {
       "foodId": 1,
       "qty": 1,
       "unitId": 3,
       "id": 2,
-      "calories": 100
+      "calories": 150
     },
     {
       "foodId": 2,

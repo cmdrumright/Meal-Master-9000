@@ -20,15 +20,15 @@ export const getServingsByFood = (foodId) => {
 //   )
 // }
 //
-// export const updateFood = (foodObj) => {
-//   return fetch(`http://localhost:8088/foods/${foodObj.id}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(foodObj),
-//   })
-// }
+export const updateServing = (servingObj) => {
+  return fetch(`http://localhost:8088/servings/${servingObj.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(servingObj),
+  })
+}
 //
 // export const deleteFood = (foodId) => {
 //   return fetch(`http://localhost:8088/Foods/${foodId}?_dependent=planFoods`, {

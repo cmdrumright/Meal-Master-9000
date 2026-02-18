@@ -142,6 +142,7 @@ export const FoodDetails = ({ currentUser }) => {
           serving={servings.find((serving) => serving.id === selectedServing)}
           units={units}
           nutrients={nutrients}
+          reloadServings={reloadServings}
         />
       ) : (
         ''
