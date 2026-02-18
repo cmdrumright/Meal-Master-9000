@@ -361,14 +361,14 @@
       "qty": 100,
       "unitId": 2,
       "id": 1,
-      "calories": 103
+      "calories": 130
     },
     {
       "foodId": 1,
       "qty": 1,
       "unitId": 3,
       "id": 2,
-      "calories": 150
+      "calories": 140
     },
     {
       "foodId": 2,
@@ -382,21 +382,21 @@
     {
       "servingId": 1,
       "nutrientId": 1,
-      "qty": 5,
+      "qty": 16,
       "id": 1,
       "unitId": 2
     },
     {
       "servingId": 1,
       "nutrientId": 2,
-      "qty": 6,
+      "qty": 10,
       "id": 2,
       "unitId": 2
     },
     {
       "servingId": 1,
       "nutrientId": 3,
-      "qty": 7,
+      "qty": 12,
       "id": 3,
       "unitId": 2
     }

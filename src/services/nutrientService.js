@@ -18,15 +18,15 @@ export const getAllNutrients = () => {
 //   )
 // }
 //
-// export const updateFood = (foodObj) => {
-//   return fetch(`http://localhost:8088/foods/${foodObj.id}`, {
-//     method: 'PUT',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(foodObj),
-//   })
-// }
+export const updateServingNutrient = (servingNutrient) => {
+  return fetch(`http://localhost:8088/servingNutrients/${servingNutrient.id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(servingNutrient),
+  })
+}
 //
 // export const deleteFood = (foodId) => {
 //   return fetch(`http://localhost:8088/Foods/${foodId}?_dependent=planFoods`, {
