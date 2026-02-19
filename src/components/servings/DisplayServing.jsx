@@ -1,4 +1,4 @@
-import { Edit } from '@mui/icons-material'
+import { AddBox, Edit } from '@mui/icons-material'
 import {
   Box,
   Button,
@@ -12,11 +12,16 @@ import {
   IconButton,
   Input,
   InputLabel,
+  MenuItem,
+  Select,
   Typography,
 } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { updateServing } from '../../services/servingService'
-import { updateServingNutrient } from '../../services/nutrientService'
+import {
+  createServingNutrient,
+  updateServingNutrient,
+} from '../../services/nutrientService'
 
 export const DisplayServing = ({
   serving,
@@ -24,10 +29,23 @@ export const DisplayServing = ({
   nutrients,
   reloadServings,
 }) => {
+  const blankServingNutrient = {
+    servingId: 0,
+    nutrientId: 0,
+    qty: 0,
+    unitId: 0,
+  }
   const [editCalories, setEditCalories] = useState(false)
   const [newCalories, setNewCalories] = useState(0)
   const [nutrientIdToEdit, setNutrientIdtoEdit] = useState(0)
   const [updatedServingNutrient, setUpdatedServingNutrient] = useState({})
+  const [newServingNutrient, setNewServingNutrient] =
+    useState(blankServingNutrient)
+  const [openCreateNutrient, setOpenCreateNutrient] = useState(false)
+
+  useEffect(() => {
+    setEditCalories(false)
+  }, [serving])
 
   const handleChange = (e) => {
     setNewCalories(+e.target.value)
@@ -60,6 +78,24 @@ export const DisplayServing = ({
   const handleClose = () => {
     setNutrientIdtoEdit(0)
     setUpdatedServingNutrient({})
+  }
+
+  // handlers for create ServingNutrient Dialog
+
+  const handleCreateNutrientClose = () => {
+    setOpenCreateNutrient(false)
+    setNewServingNutrient(blankServingNutrient)
+  }
+
+  const handleCreateNutrientSubmit = (e) => {
+    e.preventDefault()
+    createServingNutrient({
+      ...newServingNutrient,
+      servingId: serving.id,
+    }).then(() => {
+      handleCreateNutrientClose()
+      reloadServings()
+    })
   }
 
   return (
@@ -139,7 +175,17 @@ export const DisplayServing = ({
             </Box>
           )
         })}
+        <IconButton
+          aria-label="new nutrient"
+          onClick={() => {
+            setOpenCreateNutrient(true)
+          }}
+        >
+          <AddBox />
+        </IconButton>
       </Box>
+
+      {/* Dialog for updating a servingNutrient */}
       <Dialog
         open={nutrientIdToEdit != 0}
         onClose={handleClose}
@@ -168,6 +214,100 @@ export const DisplayServing = ({
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button type="submit" form="edit-form" variant="contained">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Dialog For creating a new servingNutrient */}
+      <Dialog
+        open={openCreateNutrient}
+        onClose={handleCreateNutrientClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{'Enter New Info'}</DialogTitle>
+        <DialogContent>
+          <form onSubmit={handleCreateNutrientSubmit} id="create-nutrient-form">
+            {/* Selection box for nutrient, filtered to exclude existing nutrients */}
+            <FormControl sx={{ m: 2 }}>
+              <InputLabel id="nutrient-select-label">Nutrient</InputLabel>
+              <Select
+                labelId="nutrient-select-label"
+                id="nutrient-select"
+                value={newServingNutrient.nutrientId}
+                label="Nutrient"
+                onChange={(e) =>
+                  setNewServingNutrient((prev) => ({
+                    ...prev,
+                    nutrientId: +e.target.value,
+                  }))
+                }
+                required
+              >
+                {nutrients
+                  .filter(
+                    (nutrient) =>
+                      !serving.servingNutrients.some(
+                        (servingNutrient) =>
+                          servingNutrient.nutrientId === nutrient.id
+                      )
+                  )
+                  .map((nutrient) => {
+                    return (
+                      <MenuItem key={nutrient.id} value={nutrient.id}>
+                        {nutrient.name}
+                      </MenuItem>
+                    )
+                  })}
+              </Select>
+            </FormControl>
+            {/* Selection box for unit */}
+            <FormControl sx={{ m: 2 }}>
+              <InputLabel id="unit-select-label">Units</InputLabel>
+              <Select
+                labelId="unit-select-label"
+                id="unit-select"
+                value={newServingNutrient.unitId}
+                label="Units"
+                onChange={(e) =>
+                  setNewServingNutrient((prev) => ({
+                    ...prev,
+                    unitId: +e.target.value,
+                  }))
+                }
+                required
+              >
+                {units.map((unit) => {
+                  return (
+                    <MenuItem key={unit.id} value={unit.id}>
+                      {unit.name}
+                    </MenuItem>
+                  )
+                })}
+              </Select>
+            </FormControl>
+            <FormControl sx={{ m: 2 }}>
+              <InputLabel htmlFor="qty">Quantity</InputLabel>
+              <Input
+                autoFocus={true}
+                id="qty"
+                type="number"
+                value={newServingNutrient.qty}
+                onChange={(e) =>
+                  setNewServingNutrient((prev) => ({
+                    ...prev,
+                    qty: +e.target.value,
+                  }))
+                }
+                required
+              />
+            </FormControl>
+          </form>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCreateNutrientClose}>Cancel</Button>
+          <Button type="submit" form="create-nutrient-form" variant="contained">
             Save
           </Button>
         </DialogActions>

@@ -18,6 +18,17 @@ export const getAllNutrients = () => {
 //   )
 // }
 //
+
+export const createServingNutrient = (servingNutrient) => {
+  return fetch(`http://localhost:8088/servingNutrients`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(servingNutrient),
+  })
+}
+
 export const updateServingNutrient = (servingNutrient) => {
   return fetch(`http://localhost:8088/servingNutrients/${servingNutrient.id}`, {
     method: 'PUT',
