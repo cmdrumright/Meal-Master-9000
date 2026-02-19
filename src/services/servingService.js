@@ -4,16 +4,16 @@ export const getServingsByFood = (foodId) => {
   ).then((res) => res.json())
 }
 
-// export const saveServing = (newFood) => {
-//   return fetch(`http://localhost:8088/foods`, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(newFood),
-//   }).then((res) => res.json())
-// }
-//
+export const createServing = (newServing) => {
+  return fetch(`http://localhost:8088/servings`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newServing),
+  }).then((res) => res.json())
+}
+
 // export const getFoodById = (foodId) => {
 //   return fetch(`http://localhost:8088/foods/${foodId}`).then((res) =>
 //     res.json()

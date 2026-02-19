@@ -31,9 +31,9 @@ export const DisplayServing = ({
 }) => {
   const blankServingNutrient = {
     servingId: 0,
-    nutrientId: 0,
+    nutrientId: '',
     qty: 0,
-    unitId: 0,
+    unitId: '',
   }
   const [editCalories, setEditCalories] = useState(false)
   const [newCalories, setNewCalories] = useState(0)

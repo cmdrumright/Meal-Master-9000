@@ -376,6 +376,62 @@
       "unitId": 2,
       "id": 3,
       "calories": 100
+    },
+    {
+      "foodId": 2,
+      "qty": 2,
+      "unitId": 3,
+      "calories": 23,
+      "id": 5
+    },
+    {
+      "foodId": 2,
+      "qty": 1,
+      "unitId": 1,
+      "calories": 344,
+      "id": 6
+    },
+    {
+      "foodId": 2,
+      "qty": 2,
+      "unitId": 1,
+      "calories": 122,
+      "id": 7
+    },
+    {
+      "foodId": 2,
+      "qty": 344,
+      "unitId": 2,
+      "calories": 123,
+      "id": 8
+    },
+    {
+      "foodId": 2,
+      "qty": 23,
+      "unitId": 2,
+      "calories": 6,
+      "id": 9
+    },
+    {
+      "foodId": 2,
+      "qty": 3,
+      "unitId": 3,
+      "calories": 23,
+      "id": 10
+    },
+    {
+      "foodId": 2,
+      "qty": 34,
+      "unitId": 3,
+      "calories": 23456,
+      "id": 11
+    },
+    {
+      "foodId": 4,
+      "qty": 1,
+      "unitId": 3,
+      "calories": 200,
+      "id": 12
     }
   ],
   "servingNutrients": [
@@ -413,6 +469,27 @@
       "qty": 47,
       "unitId": 2,
       "id": 6
+    },
+    {
+      "servingId": 2,
+      "nutrientId": 2,
+      "qty": 23,
+      "unitId": 2,
+      "id": 7
+    },
+    {
+      "servingId": 3,
+      "nutrientId": 1,
+      "qty": 5,
+      "unitId": 2,
+      "id": 8
+    },
+    {
+      "servingId": 12,
+      "nutrientId": 1,
+      "qty": 4,
+      "unitId": 2,
+      "id": 9
     }
   ],
   "mealFoods": [
