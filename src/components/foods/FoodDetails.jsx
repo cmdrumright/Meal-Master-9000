@@ -13,12 +13,22 @@ import {
   DialogTitle,
   DialogContent,
   DialogActions,
+  DialogContentText,
 } from '@mui/material'
 import { useEffect, useState } from 'react'
-import { getFoodById, saveFood, updateFood } from '../../services/foodService'
+import {
+  deleteFood,
+  getFoodById,
+  saveFood,
+  updateFood,
+} from '../../services/foodService'
 import { useNavigate, useParams } from 'react-router-dom'
-import { createServing, getServingsByFood } from '../../services/servingService'
-import { Edit } from '@mui/icons-material'
+import {
+  createServing,
+  deleteServing,
+  getServingsByFood,
+} from '../../services/servingService'
+import { Delete, Edit } from '@mui/icons-material'
 import { getAllUnits } from '../../services/unitService'
 import { getAllNutrients } from '../../services/nutrientService'
 import { DisplayServing } from '../servings/DisplayServing'
@@ -38,6 +48,7 @@ export const FoodDetails = ({ currentUser }) => {
   const [nutrients, setNutrients] = useState([])
   const [openNewServingMenu, setOpenNewServingMenu] = useState(false)
   const [newServing, setNewServing] = useState(blankServing)
+  const [openFoodDelete, setOpenFoodDelete] = useState(false)
 
   const { foodId } = useParams()
 
@@ -105,6 +116,20 @@ export const FoodDetails = ({ currentUser }) => {
     })
   }
 
+  // handlers for Food Delete Menu
+  const handleDeleteClose = () => {
+    setOpenFoodDelete(false)
+  }
+
+  const handleFoodDelete = () => {
+    for (const serving of servings) {
+      deleteServing(serving.id)
+    }
+    deleteFood(+foodId).then(() => {
+      navigate(-1)
+    })
+  }
+
   return (
     <>
       <Box
@@ -151,6 +176,12 @@ export const FoodDetails = ({ currentUser }) => {
               </IconButton>
             </>
           )}
+          <IconButton
+            aria-label="delete"
+            onClick={() => setOpenFoodDelete(true)}
+          >
+            <Delete />
+          </IconButton>
         </Box>
         <FormControl sx={{ m: 2 }}>
           <InputLabel id="demo-simple-select-label">Serving Size</InputLabel>
@@ -261,6 +292,32 @@ export const FoodDetails = ({ currentUser }) => {
           <Button onClick={handleNewServingClose}>Cancel</Button>
           <Button type="submit" form="create-serving-form" variant="contained">
             Save
+          </Button>
+        </DialogActions>
+      </Dialog>
+
+      {/* Dialog to Delete Food */}
+      <Dialog
+        open={openFoodDelete}
+        onClose={handleDeleteClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{'Please Confirm'}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to permanently delete this food?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleDeleteClose}>Keep</Button>
+          <Button
+            variant="contained"
+            color="warning"
+            onClick={handleFoodDelete}
+            autoFocus
+          >
+            Delete
           </Button>
         </DialogActions>
       </Dialog>

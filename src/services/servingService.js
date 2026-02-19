@@ -30,11 +30,14 @@ export const updateServing = (servingObj) => {
   })
 }
 //
-// export const deleteFood = (foodId) => {
-//   return fetch(`http://localhost:8088/Foods/${foodId}?_dependent=planFoods`, {
-//     method: 'DELETE',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//   })
-// }
+export const deleteServing = (servingId) => {
+  return fetch(
+    `http://localhost:8088/servings/${servingId}?_dependent=servingNutrients`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  )
+}
