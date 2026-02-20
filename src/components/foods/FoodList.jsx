@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { deleteFood, getMyFoods } from '../../services/foodService'
 import {
   Box,
+  CardActionArea,
   Dialog,
   DialogActions,
   DialogContent,
@@ -58,25 +59,18 @@ export const FoodList = ({ currentUser }) => {
       >
         {myFoods.map((food) => {
           return (
-            <Card key={food.id} sx={{ minWidth: 275, m: 1 }}>
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  {food.name}
-                </Typography>
-              </CardContent>
-              <CardActions>
-                <Button
-                  size="small"
-                  onClick={() => {
-                    navigate(`${food.id}/edit`)
-                  }}
-                >
-                  edit
-                </Button>
-                <Button size="small" onClick={() => setIdToDelete(food.id)}>
-                  delete
-                </Button>
-              </CardActions>
+            <Card
+              key={food.id}
+              sx={{ minWidth: 275, m: 1 }}
+              onClick={() => navigate(`${food.id}`)}
+            >
+              <CardActionArea>
+                <CardContent>
+                  <Typography variant="h5" component="div">
+                    {food.name}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           )
         })}

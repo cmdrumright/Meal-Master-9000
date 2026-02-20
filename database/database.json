@@ -234,6 +234,27 @@
       "dayId": 6,
       "timeSlotId": 1,
       "id": 31
+    },
+    {
+      "planId": 5,
+      "mealId": 16,
+      "dayId": 1,
+      "timeSlotId": 1,
+      "id": 32
+    },
+    {
+      "planId": 5,
+      "mealId": 16,
+      "dayId": 2,
+      "timeSlotId": 1,
+      "id": 33
+    },
+    {
+      "planId": 5,
+      "mealId": 16,
+      "dayId": 3,
+      "timeSlotId": 1,
+      "id": 34
     }
   ],
   "meals": [
@@ -325,12 +346,7 @@
   ],
   "foods": [
     {
-      "name": "Chicken",
-      "userId": 1,
-      "id": 1
-    },
-    {
-      "name": "Brocoli",
+      "name": "Broccoli",
       "userId": 1,
       "id": 2
     },
@@ -348,67 +364,48 @@
       "name": "Rice",
       "userId": 1,
       "id": 5
-    },
-    {
-      "name": "Pasta",
-      "userId": 1,
-      "id": 6
     }
   ],
   "servings": [
     {
-      "foodId": 1,
-      "qty": 100,
-      "unitId": 2,
-      "id": 1,
-      "calories": 100
-    },
-    {
-      "foodId": 1,
+      "foodId": 4,
       "qty": 1,
       "unitId": 3,
-      "id": 2,
-      "calories": 100
+      "calories": 200,
+      "id": 12
     },
     {
       "foodId": 2,
-      "qty": 100,
-      "unitId": 2,
-      "id": 3,
-      "calories": 100
+      "qty": 1,
+      "unitId": 3,
+      "calories": 52,
+      "id": 13
     }
   ],
   "servingNutrients": [
     {
-      "servingId": 1,
-      "nutrientId": 1,
-      "qty": 5,
-      "id": 1,
-      "unitId": 2
-    },
-    {
-      "servingId": 1,
-      "nutrientId": 2,
-      "qty": 6,
-      "id": 2,
-      "unitId": 2
-    },
-    {
-      "servingId": 1,
+      "servingId": 13,
       "nutrientId": 3,
-      "qty": 7,
-      "id": 3,
-      "unitId": 2
+      "qty": 0.2,
+      "unitId": 2,
+      "id": 1
+    },
+    {
+      "servingId": 13,
+      "nutrientId": 2,
+      "qty": 10,
+      "unitId": 2,
+      "id": 2
+    },
+    {
+      "servingId": 13,
+      "nutrientId": 1,
+      "qty": 6,
+      "unitId": 2,
+      "id": 3
     }
   ],
   "mealFoods": [
-    {
-      "mealId": 14,
-      "foodId": 1,
-      "qty": 100,
-      "id": 1,
-      "unitId": 2
-    },
     {
       "mealId": 14,
       "foodId": 2,
