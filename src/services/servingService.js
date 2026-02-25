@@ -1,3 +1,9 @@
+export const getAllServings = () => {
+  return fetch(`http://localhost:8088/servings?_embed=servingNutrients`).then(
+    (res) => res.json()
+  )
+}
+
 export const getServingsByFood = (foodId) => {
   return fetch(
     `http://localhost:8088/servings?foodId=${foodId}&_embed=servingNutrients`
