@@ -38,3 +38,21 @@ export const deleteMeal = (mealId) => {
     },
   })
 }
+
+// Meal Foods functions
+
+export const getMealFoodsById = (mealId) => {
+  return fetch(
+    `http://localhost:8088/mealFoods/?mealId=${mealId}&_expand=food&_expand=unit`
+  ).then((res) => res.json())
+}
+
+export const addMealFood = (newMealFood) => {
+  return fetch(`http://localhost:8088/mealFoods`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newMealFood),
+  })
+}

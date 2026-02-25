@@ -259,7 +259,7 @@
   ],
   "meals": [
     {
-      "name": "Chicken and Brocoli",
+      "name": "Chicken and Broccoli",
       "calories": 523,
       "userId": 1,
       "id": 14
@@ -380,6 +380,27 @@
       "unitId": 3,
       "calories": 52,
       "id": 13
+    },
+    {
+      "foodId": 2,
+      "qty": 100,
+      "unitId": 2,
+      "calories": 60,
+      "id": 14
+    },
+    {
+      "foodId": 3,
+      "qty": 50,
+      "unitId": 2,
+      "calories": 85,
+      "id": 15
+    },
+    {
+      "foodId": 5,
+      "qty": 100,
+      "unitId": 2,
+      "calories": 200,
+      "id": 16
     }
   ],
   "servingNutrients": [
@@ -409,9 +430,23 @@
     {
       "mealId": 14,
       "foodId": 2,
-      "qty": 100,
+      "qty": 70,
       "id": 2,
       "unitId": 2
+    },
+    {
+      "mealId": 14,
+      "foodId": 3,
+      "qty": 100,
+      "id": 3,
+      "unitId": 2
+    },
+    {
+      "mealId": 14,
+      "foodId": 5,
+      "qty": 200,
+      "unitId": 2,
+      "id": 4
     }
   ]
 }
