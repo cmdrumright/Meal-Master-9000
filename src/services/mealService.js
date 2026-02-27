@@ -11,7 +11,7 @@ export const saveMeal = (newMeal) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(newMeal),
-  })
+  }).then((res) => res.json())
 }
 
 export const getMealById = (mealId) => {
@@ -31,12 +31,15 @@ export const updateMeal = (mealObj) => {
 }
 
 export const deleteMeal = (mealId) => {
-  return fetch(`http://localhost:8088/meals/${mealId}?_dependent=planMeals`, {
-    method: 'DELETE',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+  return fetch(
+    `http://localhost:8088/meals/${mealId}?_dependent=planMeals&_dependent=mealFoods`,
+    {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  )
 }
 
 // Meal Foods functions

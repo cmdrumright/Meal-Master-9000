@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { deletePlan, getMyPlans, savePlan } from '../../services/planService'
-import { getMyMeals } from '../../services/mealService'
 import {
   Box,
   Button,
@@ -15,29 +14,19 @@ import {
   Typography,
 } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { buildMyPlans } from '../../utilities/plan'
+import { calculateAverageDailyCalories } from '../../utilities/calories'
 
 export const PlanList = ({ currentUser }) => {
   const [myPlans, setMyPlans] = useState([])
-  const [myMeals, setMyMeals] = useState([])
   const [idToDelete, setIdToDelete] = useState(0)
 
   const navigate = useNavigate()
 
   useEffect(() => {
-    getMyPlans(currentUser.id).then(setMyPlans)
-    getMyMeals(currentUser.id).then(setMyMeals)
+    // getMyPlans(currentUser.id).then(setMyPlans)
+    buildMyPlans(currentUser.id).then(setMyPlans)
   }, [currentUser])
-
-  const calculatePlanAverage = (planMeals) => {
-    // for each meal in array, find meal calories and add to average
-    let calorieTotal = 0
-    for (const planMeal of planMeals) {
-      calorieTotal += myMeals.find(
-        (myMeal) => myMeal.id === planMeal.mealId
-      )?.calories
-    }
-    return Math.round(calorieTotal / 7)
-  }
 
   const handleNew = () => {
     const newPlan = {
@@ -55,7 +44,7 @@ export const PlanList = ({ currentUser }) => {
 
   const handleDelete = () => {
     deletePlan(idToDelete).then(() => {
-      getMyPlans(currentUser.id).then(setMyPlans)
+      buildMyPlans(currentUser.id).then(setMyPlans)
     })
     setIdToDelete(0)
   }
@@ -86,7 +75,7 @@ export const PlanList = ({ currentUser }) => {
                   {plan.name}
                 </Typography>
                 <Typography variant="body2">
-                  {calculatePlanAverage(plan.planMeals)} daily calories
+                  {calculateAverageDailyCalories(plan.planMeals)} daily calories
                 </Typography>
               </CardContent>
               <CardActions>

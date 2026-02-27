@@ -23,22 +23,12 @@ import {
   updateFood,
 } from '../../services/foodService'
 import { useNavigate, useParams } from 'react-router-dom'
-import {
-  createServing,
-  deleteServing,
-  getAllServings,
-  getServingsByFood,
-} from '../../services/servingService'
+import { deleteServing } from '../../services/servingService'
 import { AddBox, Delete, Edit } from '@mui/icons-material'
 import { getAllUnits } from '../../services/unitService'
-import { getAllNutrients } from '../../services/nutrientService'
-import { DisplayServing } from '../servings/DisplayServing'
-import {
-  getMealById,
-  getMealFoodsById,
-  updateMeal,
-  addMealFood,
-} from '../../services/mealService'
+import { updateMeal, addMealFood, deleteMeal } from '../../services/mealService'
+import { buildMealById, calculateMealCalories } from '../../utilities/meal'
+import { calculateMealFoodCalories } from '../../utilities/mealFood'
 
 export const MealDetails = ({ currentUser }) => {
   const blankMealFood = {
@@ -47,41 +37,35 @@ export const MealDetails = ({ currentUser }) => {
     qty: 0,
     unitId: '',
   }
-  const [mealObj, setMealObj] = useState({})
-  const [myMealFoods, setMyMealFoods] = useState([])
-  const [allServings, setAllServings] = useState([])
+  const [mealObj, setMealObj] = useState({ mealFoods: [] })
   const [myFoods, setMyFoods] = useState([])
   const [selectedServing, setSelectedServing] = useState('')
   const [editName, setEditName] = useState(false)
   const [units, setUnits] = useState([])
-  const [nutrients, setNutrients] = useState([])
   const [openNewServingMenu, setOpenNewServingMenu] = useState(false)
   const [newMealFood, setNewMealFood] = useState(blankMealFood)
   const [openAddFood, setOpenAddFood] = useState(false)
-  const [openFoodDelete, setOpenFoodDelete] = useState(false)
+  const [openFoodDelete, setOpenMealDelete] = useState(false)
   const [openServingDelete, setOpenServingDelete] = useState(false)
 
   const { mealId } = useParams()
 
   const navigate = useNavigate()
 
-  const reloadMealFoods = () => {
-    getMealFoodsById(mealId).then(setMyMealFoods)
+  const loadMeal = () => {
+    buildMealById(mealId).then(setMealObj)
   }
 
   useEffect(() => {
     getAllUnits().then(setUnits)
-    getAllNutrients().then(setNutrients)
-    getAllServings().then(setAllServings)
   }, [])
 
   useEffect(() => {
     if (currentUser.id) {
       getMyFoods(currentUser.id).then(setMyFoods)
-      getMealById(mealId).then((foundMeal) => {
+      buildMealById(mealId).then((foundMeal) => {
         if (foundMeal.userId === currentUser.id) {
           setMealObj(foundMeal)
-          reloadMealFoods()
         } else {
           navigate(-1)
         }
@@ -89,33 +73,19 @@ export const MealDetails = ({ currentUser }) => {
     }
   }, [mealId, currentUser])
 
-  const calculateFoodCalories = (mealFood) => {
-    const foundServing = allServings.find(
-      (serving) =>
-        serving.unitId === mealFood.unitId && serving.foodId === mealFood.foodId
-    )
-    if (foundServing) {
-      const foodCalories =
-        (foundServing.calories / foundServing.qty) * mealFood.qty
-      return `${foodCalories} calories`
-    } else {
-      return ''
-    }
-  }
-
   const handleChange = (e) => {
     let copy = { ...mealObj }
     if (e.target.id === 'mname') {
       copy.name = e.target.value
-    } else if (e.target.id === 'calories') {
-      copy.calories = +e.target.value
     }
     setMealObj(copy)
   }
 
   const handleNameSubmit = (e) => {
     e.preventDefault()
-    updateMeal(mealObj).then(() => {
+    let copy = { ...mealObj }
+    delete copy.mealFoods
+    updateMeal(copy).then(() => {
       setEditName(false)
     })
   }
@@ -138,21 +108,18 @@ export const MealDetails = ({ currentUser }) => {
   const handleAddFoodSubmit = (e) => {
     e.preventDefault()
     addMealFood({ ...newMealFood, mealId: +mealId }).then(() => {
-      reloadMealFoods()
+      loadMeal()
       handleAddFoodClose()
     })
   }
 
-  // handlers for Food Delete Menu
+  // handlers for Meal Delete Menu
   const handleDeleteClose = () => {
-    setOpenFoodDelete(false)
+    setOpenMealDelete(false)
   }
 
-  const handleFoodDelete = () => {
-    for (const serving of servings) {
-      deleteServing(serving.id)
-    }
-    deleteFood(+mealId).then(() => {
+  const handleMealDelete = () => {
+    deleteMeal(+mealId).then(() => {
       navigate(-1)
     })
   }
@@ -166,7 +133,6 @@ export const MealDetails = ({ currentUser }) => {
     deleteServing(selectedServing).then(() => {
       handleServingDeleteClose()
       setSelectedServing('')
-      reloadServings()
     })
   }
 
@@ -218,7 +184,7 @@ export const MealDetails = ({ currentUser }) => {
           )}
           <IconButton
             aria-label="delete"
-            onClick={() => setOpenFoodDelete(true)}
+            onClick={() => setOpenMealDelete(true)}
           >
             <Delete />
           </IconButton>
@@ -230,15 +196,18 @@ export const MealDetails = ({ currentUser }) => {
             m: 2,
           }}
         >
-          {myMealFoods.length
-            ? myMealFoods.map((mealFood) => {
+          <Typography variant="h5">
+            Total Calories: {calculateMealCalories(mealObj)}
+          </Typography>
+          {mealObj.mealFoods.length
+            ? mealObj.mealFoods.map((mealFood) => {
                 return (
                   <Typography key={mealFood.id}>
                     {mealFood.food.name}
                     {': '}
                     {mealFood.qty} {mealFood.unit.name}
                     {': '}
-                    {calculateFoodCalories(mealFood)}
+                    {calculateMealFoodCalories(mealFood)}
                   </Typography>
                 )
               })
@@ -341,7 +310,7 @@ export const MealDetails = ({ currentUser }) => {
         </DialogActions>
       </Dialog>
 
-      {/* Dialog to Delete Food */}
+      {/* Dialog to Delete Meal */}
       <Dialog
         open={openFoodDelete}
         onClose={handleDeleteClose}
@@ -359,7 +328,7 @@ export const MealDetails = ({ currentUser }) => {
           <Button
             variant="contained"
             color="warning"
-            onClick={handleFoodDelete}
+            onClick={handleMealDelete}
             autoFocus
           >
             Delete
