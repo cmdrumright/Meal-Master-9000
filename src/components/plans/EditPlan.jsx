@@ -27,6 +27,12 @@ import {
 } from '../../services/planMealService'
 import { getDays, getTimeSlots } from '../../services/dayService'
 import { getMyMeals } from '../../services/mealService'
+import { buildPlan } from '../../utilities/plan'
+import {
+  calculateAverageDailyCalories,
+  calculateDayCalories,
+} from '../../utilities/calories'
+import { calculateMealCalories } from '../../utilities/meal'
 
 export const EditPlan = ({ currentUser }) => {
   const [myPlan, setMyPlan] = useState({})
@@ -41,8 +47,9 @@ export const EditPlan = ({ currentUser }) => {
 
   const navigate = useNavigate()
 
+  // TODO replace get command with build command
   useEffect(() => {
-    getPlanById(planId).then((planObj) => {
+    buildPlan(planId).then((planObj) => {
       if (planObj.userId === currentUser?.id) {
         setMyPlan(planObj)
         getMyMeals(currentUser.id).then(setMyMeals)
@@ -63,7 +70,9 @@ export const EditPlan = ({ currentUser }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    updatePlan(myPlan).then(() => {
+    let copy = { ...myPlan }
+    delete copy.planMeals
+    updatePlan(copy).then(() => {
       navigate(-1)
     })
   }
@@ -101,7 +110,7 @@ export const EditPlan = ({ currentUser }) => {
   const handleListItemClick = (mealId) => {
     selectedSlots.forEach((slot) => {
       // check if existing planMeal and overwrite or add new
-      const foundPlanMeal = myPlanMeals.find(
+      const foundPlanMeal = myPlan.planMeals.find(
         (planMeal) =>
           planMeal.dayId === slot.dayId && planMeal.timeSlotId === slot.slotId
       )
@@ -114,11 +123,11 @@ export const EditPlan = ({ currentUser }) => {
       if (foundPlanMeal) {
         newPlanMeal.id = foundPlanMeal.id
         updatePlanMeal(newPlanMeal).then(() => {
-          getPlanMealsByPlanId(planId).then(setMyPlanMeals)
+          buildPlan(planId).then(setMyPlan)
         })
       } else {
         addPlanMeal(newPlanMeal).then(() => {
-          getPlanMealsByPlanId(planId).then(setMyPlanMeals)
+          buildPlan(planId).then(setMyPlan)
         })
       }
     })
@@ -145,6 +154,9 @@ export const EditPlan = ({ currentUser }) => {
           Save
         </Button>
       </form>
+      <Typography sx={{ m: 2 }} variant="h5" component="div">
+        {calculateAverageDailyCalories(myPlan.planMeals)} Average Daily Calories
+      </Typography>
       {selectedSlots.length ? (
         <Button
           variant="contained"
@@ -159,6 +171,7 @@ export const EditPlan = ({ currentUser }) => {
       )}
       <Box
         sx={{
+          m: 2,
           display: 'flex',
           flexDirection: 'column',
         }}
@@ -168,6 +181,8 @@ export const EditPlan = ({ currentUser }) => {
             <div key={day.id}>
               <Typography variant="h4" component="div">
                 {day.name}
+                {': '}
+                {calculateDayCalories(myPlan.planMeals, day.id)} Calories
               </Typography>
               <Box
                 key={day.id}
@@ -178,7 +193,7 @@ export const EditPlan = ({ currentUser }) => {
                 }}
               >
                 {timeSlots.map((timeSlot) => {
-                  const mealInfo = myPlanMeals.find(
+                  const foundPlanMeal = myPlan.planMeals.find(
                     (planMeal) =>
                       planMeal.dayId === day.id &&
                       planMeal.timeSlotId === timeSlot.id
@@ -189,12 +204,19 @@ export const EditPlan = ({ currentUser }) => {
                         <Typography variant="h5" component="div">
                           {timeSlot.name}
                         </Typography>
-                        <Typography variant="body2">
-                          {mealInfo?.meal.name}
-                        </Typography>
-                        <Typography variant="body2">
-                          {mealInfo?.meal.calories} calories
-                        </Typography>
+                        {foundPlanMeal ? (
+                          <>
+                            <Typography variant="body2">
+                              {foundPlanMeal.meal.name}
+                            </Typography>
+                            <Typography variant="body2">
+                              {calculateMealCalories(foundPlanMeal.meal)}{' '}
+                              calories
+                            </Typography>
+                          </>
+                        ) : (
+                          ''
+                        )}
                         <Checkbox
                           checked={isChecked(day.id, timeSlot.id)}
                           onChange={() => {
