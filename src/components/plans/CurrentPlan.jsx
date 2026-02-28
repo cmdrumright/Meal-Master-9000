@@ -89,12 +89,6 @@ export const CurrentPlan = ({ currentUser }) => {
       >
         Change Plan
       </Button>
-      <Typography variant="h3" component="div">
-        {myPlan.name}
-      </Typography>
-      <Typography variant="h4" component="div">
-        {calculateAverageDailyCalories(myPlan.planMeals)} Average Daily Calories
-      </Typography>
       <Button
         variant="contained"
         color="secondary"
@@ -103,21 +97,28 @@ export const CurrentPlan = ({ currentUser }) => {
       >
         Edit Plan
       </Button>
+      <Typography variant="h4" component="div" sx={{ mx: 2 }}>
+        {myPlan.name}
+      </Typography>
+      <Typography variant="h6" component="div" sx={{ mx: 2 }}>
+        {calculateAverageDailyCalories(myPlan.planMeals)} Average Daily Calories
+      </Typography>
 
       {/* Map days and timeSlots to get list of potential meal times */}
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          m: 2,
         }}
       >
         {days.map((day) => {
           return (
             <div key={day.id}>
-              <Typography variant="h4" component="div">
+              <Typography variant="h5" component="div">
                 {day.name}
               </Typography>
-              <Typography variant="h5" component="div">
+              <Typography variant="h7" component="div">
                 {calculateDayCalories(myPlan.planMeals, day.id)} Calories
               </Typography>
               <Box
@@ -137,7 +138,7 @@ export const CurrentPlan = ({ currentUser }) => {
                   return (
                     <Card key={timeSlot.id} sx={{ minWidth: 200, m: 1 }}>
                       <CardContent>
-                        <Typography variant="h5" component="div">
+                        <Typography variant="h6" component="div">
                           {timeSlot.name}
                         </Typography>
                         {foundPlanMeal ? (

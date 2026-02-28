@@ -230,7 +230,7 @@ export const DisplayServing = ({
         <DialogContent>
           <form onSubmit={handleCreateNutrientSubmit} id="create-nutrient-form">
             {/* Selection box for nutrient, filtered to exclude existing nutrients */}
-            <FormControl sx={{ m: 2 }}>
+            <FormControl fullWidth sx={{ my: 2 }}>
               <InputLabel id="nutrient-select-label">Nutrient</InputLabel>
               <Select
                 labelId="nutrient-select-label"
@@ -263,7 +263,7 @@ export const DisplayServing = ({
               </Select>
             </FormControl>
             {/* Selection box for unit */}
-            <FormControl sx={{ m: 2 }}>
+            <FormControl fullWidth sx={{ my: 2 }}>
               <InputLabel id="unit-select-label">Units</InputLabel>
               <Select
                 labelId="unit-select-label"
@@ -287,7 +287,7 @@ export const DisplayServing = ({
                 })}
               </Select>
             </FormControl>
-            <FormControl sx={{ m: 2 }}>
+            <FormControl fullWidth sx={{ my: 2 }}>
               <InputLabel htmlFor="qty">Quantity</InputLabel>
               <Input
                 autoFocus={true}

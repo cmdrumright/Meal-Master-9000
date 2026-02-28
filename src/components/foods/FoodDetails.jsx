@@ -198,7 +198,7 @@ export const FoodDetails = ({ currentUser }) => {
             m: 2,
           }}
         >
-          <FormControl sx={{ m: 2 }}>
+          <FormControl fullWidth sx={{ m: 2 }}>
             <InputLabel id="demo-simple-select-label">Serving Size</InputLabel>
             <Select
               labelId="demo-simple-select-label"
@@ -243,7 +243,7 @@ export const FoodDetails = ({ currentUser }) => {
         )}
       </Box>
 
-      {/* Dialog For creating a new servingNutrient */}
+      {/* Dialog For creating a new serving */}
       <Dialog
         open={openNewServingMenu}
         onClose={handleNewServingClose}
@@ -253,65 +253,67 @@ export const FoodDetails = ({ currentUser }) => {
         <DialogTitle id="alert-dialog-title">{'Enter New Info'}</DialogTitle>
         <DialogContent>
           <form onSubmit={handleCreateServingSubmit} id="create-serving-form">
-            {/* Selection box for unit */}
-            <FormControl sx={{ m: 2 }}>
-              <InputLabel id="unit-select-label">Units</InputLabel>
-              <Select
-                labelId="unit-select-label"
-                id="unit-select"
-                value={newServing.unitId}
-                label="Units"
-                onChange={(e) =>
-                  setNewServing((prev) => ({
-                    ...prev,
-                    unitId: +e.target.value,
-                  }))
-                }
-                required
-              >
-                {units.map((unit) => {
-                  return (
-                    <MenuItem key={unit.id} value={unit.id}>
-                      {unit.name}
-                    </MenuItem>
-                  )
-                })}
-              </Select>
-            </FormControl>
-            {/* Input for Quantity */}
-            <FormControl sx={{ m: 2 }}>
-              <InputLabel htmlFor="qty">Quantity</InputLabel>
-              <Input
-                autoFocus={true}
-                id="qty"
-                type="number"
-                value={newServing.qty}
-                onChange={(e) =>
-                  setNewServing((prev) => ({
-                    ...prev,
-                    qty: +e.target.value,
-                  }))
-                }
-                required
-              />
-            </FormControl>
-            {/* Input for Calories */}
-            <FormControl sx={{ m: 2 }}>
-              <InputLabel htmlFor="calories">Calories</InputLabel>
-              <Input
-                autoFocus={true}
-                id="calories"
-                type="number"
-                value={newServing.calories}
-                onChange={(e) =>
-                  setNewServing((prev) => ({
-                    ...prev,
-                    calories: +e.target.value,
-                  }))
-                }
-                required
-              />
-            </FormControl>
+            <Box sx={{ m: 1 }}>
+              {/* Selection box for unit */}
+              <FormControl fullWidth sx={{ my: 2 }}>
+                <InputLabel id="unit-select-label">Units</InputLabel>
+                <Select
+                  labelId="unit-select-label"
+                  id="unit-select"
+                  value={newServing.unitId}
+                  label="Units"
+                  onChange={(e) =>
+                    setNewServing((prev) => ({
+                      ...prev,
+                      unitId: +e.target.value,
+                    }))
+                  }
+                  required
+                >
+                  {units.map((unit) => {
+                    return (
+                      <MenuItem key={unit.id} value={unit.id}>
+                        {unit.name}
+                      </MenuItem>
+                    )
+                  })}
+                </Select>
+              </FormControl>
+              {/* Input for Quantity */}
+              <FormControl fullWidth sx={{ my: 2 }}>
+                <InputLabel htmlFor="qty">Quantity</InputLabel>
+                <Input
+                  autoFocus={true}
+                  id="qty"
+                  type="number"
+                  value={newServing.qty}
+                  onChange={(e) =>
+                    setNewServing((prev) => ({
+                      ...prev,
+                      qty: +e.target.value,
+                    }))
+                  }
+                  required
+                />
+              </FormControl>
+              {/* Input for Calories */}
+              <FormControl fullWidth sx={{ my: 2 }}>
+                <InputLabel htmlFor="calories">Calories</InputLabel>
+                <Input
+                  autoFocus={true}
+                  id="calories"
+                  type="number"
+                  value={newServing.calories}
+                  onChange={(e) =>
+                    setNewServing((prev) => ({
+                      ...prev,
+                      calories: +e.target.value,
+                    }))
+                  }
+                  required
+                />
+              </FormControl>
+            </Box>
           </form>
         </DialogContent>
         <DialogActions>

@@ -33,7 +33,7 @@ import { calculateMealFoodCalories } from '../../utilities/mealFood'
 export const MealDetails = ({ currentUser }) => {
   const blankMealFood = {
     mealId: 0,
-    foodId: 0,
+    foodId: '',
     qty: 0,
     unitId: '',
   }
@@ -223,7 +223,7 @@ export const MealDetails = ({ currentUser }) => {
         </Box>
       </Box>
 
-      {/* TODO replace with food add. Dialog For creating a new servingNutrient */}
+      {/* Dialog For creating a new mealFood */}
       <Dialog
         open={openAddFood}
         onClose={handleAddFoodClose}
@@ -234,7 +234,7 @@ export const MealDetails = ({ currentUser }) => {
         <DialogContent>
           <form onSubmit={handleAddFoodSubmit} id="add-food-form">
             {/* Selection box for food */}
-            <FormControl sx={{ m: 2 }}>
+            <FormControl fullWidth sx={{ ym: 2 }}>
               <InputLabel id="food-select-label">Food</InputLabel>
               <Select
                 labelId="food-select-label"
@@ -259,7 +259,7 @@ export const MealDetails = ({ currentUser }) => {
               </Select>
             </FormControl>
             {/* Selection box for unit */}
-            <FormControl sx={{ m: 2 }}>
+            <FormControl fullWidth sx={{ my: 2 }}>
               <InputLabel id="unit-select-label">Units</InputLabel>
               <Select
                 labelId="unit-select-label"
@@ -284,7 +284,7 @@ export const MealDetails = ({ currentUser }) => {
               </Select>
             </FormControl>
             {/* Input for Quantity */}
-            <FormControl sx={{ m: 2 }}>
+            <FormControl fullWidth sx={{ my: 2 }}>
               <InputLabel htmlFor="qty">Quantity</InputLabel>
               <Input
                 autoFocus={true}
