@@ -154,7 +154,7 @@ export const EditPlan = ({ currentUser }) => {
           Save
         </Button>
       </form>
-      <Typography sx={{ m: 2 }} variant="h5" component="div">
+      <Typography sx={{ m: 2 }} variant="h6" component="div">
         {calculateAverageDailyCalories(myPlan.planMeals)} Average Daily Calories
       </Typography>
       {selectedSlots.length ? (
@@ -179,7 +179,7 @@ export const EditPlan = ({ currentUser }) => {
         {days.map((day) => {
           return (
             <div key={day.id}>
-              <Typography variant="h4" component="div">
+              <Typography variant="h5" component="div">
                 {day.name}
                 {': '}
                 {calculateDayCalories(myPlan.planMeals, day.id)} Calories
@@ -201,7 +201,7 @@ export const EditPlan = ({ currentUser }) => {
                   return (
                     <Card key={timeSlot.id} sx={{ minWidth: 200, m: 1 }}>
                       <CardContent>
-                        <Typography variant="h5" component="div">
+                        <Typography variant="h6" component="div">
                           {timeSlot.name}
                         </Typography>
                         {foundPlanMeal ? (
