@@ -6,7 +6,7 @@
       "email": "BJan@su.edu",
       "calorieGoal": 2000,
       "weekStart": 1,
-      "activePlanId": 5
+      "activePlanId": 11
     },
     {
       "email": "thehedge@gmail.com",
@@ -37,6 +37,11 @@
       "name": "Week 1",
       "userId": 1,
       "id": 10
+    },
+    {
+      "name": "New Plan",
+      "userId": 1,
+      "id": 11
     }
   ],
   "days": [
@@ -430,6 +435,55 @@
       "dayId": 5,
       "timeSlotId": 1,
       "id": 63
+    },
+    {
+      "planId": 11,
+      "mealId": 14,
+      "dayId": 1,
+      "timeSlotId": 2,
+      "id": 64
+    },
+    {
+      "planId": 11,
+      "mealId": 14,
+      "dayId": 2,
+      "timeSlotId": 2,
+      "id": 65
+    },
+    {
+      "planId": 11,
+      "mealId": 14,
+      "dayId": 3,
+      "timeSlotId": 2,
+      "id": 66
+    },
+    {
+      "planId": 11,
+      "mealId": 14,
+      "dayId": 6,
+      "timeSlotId": 2,
+      "id": 67
+    },
+    {
+      "planId": 11,
+      "mealId": 14,
+      "dayId": 4,
+      "timeSlotId": 2,
+      "id": 68
+    },
+    {
+      "planId": 11,
+      "mealId": 14,
+      "dayId": 5,
+      "timeSlotId": 2,
+      "id": 69
+    },
+    {
+      "planId": 11,
+      "mealId": 14,
+      "dayId": 7,
+      "timeSlotId": 2,
+      "id": 70
     }
   ],
   "meals": [
@@ -492,6 +546,11 @@
       "calories": 0,
       "userId": 1,
       "id": 23
+    },
+    {
+      "name": "Egg Burrito",
+      "userId": 1,
+      "id": 24
     }
   ],
   "units": [
@@ -550,6 +609,21 @@
       "name": "Chocolate Covered Cashews",
       "userId": 1,
       "id": 6
+    },
+    {
+      "name": "Pasta",
+      "userId": 1,
+      "id": 7
+    },
+    {
+      "name": "Eggs",
+      "userId": 1,
+      "id": 8
+    },
+    {
+      "name": "Chicken",
+      "userId": 1,
+      "id": 9
     }
   ],
   "servings": [
@@ -601,6 +675,20 @@
       "unitId": 2,
       "calories": 100,
       "id": 18
+    },
+    {
+      "foodId": 8,
+      "qty": 220,
+      "unitId": 2,
+      "calories": 365,
+      "id": 19
+    },
+    {
+      "foodId": 9,
+      "qty": 100,
+      "unitId": 2,
+      "calories": 200,
+      "id": 20
     }
   ],
   "servingNutrients": [
@@ -638,6 +726,20 @@
       "qty": 3,
       "unitId": 2,
       "id": 5
+    },
+    {
+      "servingId": 19,
+      "nutrientId": 1,
+      "qty": 24.4,
+      "unitId": 2,
+      "id": 6
+    },
+    {
+      "servingId": 20,
+      "nutrientId": 1,
+      "qty": 50,
+      "unitId": 2,
+      "id": 7
     }
   ],
   "mealFoods": [
@@ -675,6 +777,20 @@
       "qty": 20,
       "unitId": 2,
       "id": 6
+    },
+    {
+      "mealId": 24,
+      "foodId": 8,
+      "qty": 100,
+      "unitId": 2,
+      "id": 7
+    },
+    {
+      "mealId": 14,
+      "foodId": 9,
+      "qty": 50,
+      "unitId": 2,
+      "id": 8
     }
   ]
 }

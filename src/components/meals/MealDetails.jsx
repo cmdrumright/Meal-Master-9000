@@ -197,7 +197,7 @@ export const MealDetails = ({ currentUser }) => {
           }}
         >
           <Typography variant="h5">
-            Total Calories: {calculateMealCalories(mealObj)}
+            Total Calories: {Math.round(calculateMealCalories(mealObj))}
           </Typography>
           {mealObj.mealFoods.length
             ? mealObj.mealFoods.map((mealFood) => {
@@ -207,7 +207,7 @@ export const MealDetails = ({ currentUser }) => {
                     {': '}
                     {mealFood.qty} {mealFood.unit.name}
                     {': '}
-                    {calculateMealFoodCalories(mealFood)}
+                    {Math.round(calculateMealFoodCalories(mealFood))}
                   </Typography>
                 )
               })

@@ -21,7 +21,7 @@ export const NewFood = ({ currentUser }) => {
       userId: currentUser.id,
     }
     saveFood(newFood).then((data) => {
-      navigate(`/foods/${data.id}/edit`)
+      navigate(`/foods/${data.id}`)
     })
   }
 
