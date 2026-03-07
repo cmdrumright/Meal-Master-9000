@@ -8,6 +8,11 @@ import { EditMeal } from '../components/meals/EditMeal'
 import { PlanList } from '../components/plans/PlanList'
 import { EditPlan } from '../components/plans/EditPlan'
 import { CurrentPlan } from '../components/plans/CurrentPlan'
+import { FoodList } from '../components/foods/FoodList'
+import { NewFood } from '../components/foods/NewFood'
+import { EditFood } from '../components/foods/EditFood'
+import { FoodDetails } from '../components/foods/FoodDetails'
+import { MealDetails } from '../components/meals/MealDetails'
 
 export const ApplicationViews = () => {
   const [currentUser, setCurrentUser] = useState({})
@@ -34,6 +39,7 @@ export const ApplicationViews = () => {
           <Route index element={<MealList currentUser={currentUser} />} />
           <Route path="new" element={<NewMeal currentUser={currentUser} />} />
           <Route path=":mealId">
+            <Route index element={<MealDetails currentUser={currentUser} />} />
             <Route
               path="edit"
               element={<EditMeal currentUser={currentUser} />}
@@ -45,6 +51,14 @@ export const ApplicationViews = () => {
           <Route
             path=":planId/edit"
             element={<EditPlan currentUser={currentUser} />}
+          />
+        </Route>
+        <Route path="foods" element={<Outlet />}>
+          <Route index element={<FoodList currentUser={currentUser} />} />
+          <Route path="new" element={<NewFood currentUser={currentUser} />} />
+          <Route
+            path=":foodId"
+            element={<FoodDetails currentUser={currentUser} />}
           />
         </Route>
       </Route>

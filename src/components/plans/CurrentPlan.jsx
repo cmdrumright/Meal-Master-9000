@@ -31,6 +31,13 @@ import {
   getActivePlanByUserId,
   setActivePlan,
 } from '../../services/userService'
+import { buildPlan } from '../../utilities/plan'
+import { calculateMealFoodCalories } from '../../utilities/mealFood'
+import { calculateMealCalories } from '../../utilities/meal'
+import {
+  calculateAverageDailyCalories,
+  calculateDayCalories,
+} from '../../utilities/calories'
 
 export const CurrentPlan = ({ currentUser }) => {
   const [planId, setPlanId] = useState(0)
@@ -54,8 +61,9 @@ export const CurrentPlan = ({ currentUser }) => {
 
   useEffect(() => {
     if (planId > 0) {
+      buildPlan(planId).then(setMyPlan)
       getPlanById(planId).then((planObj) => {
-        setMyPlan(planObj)
+        // setMyPlan(planObj)
         getMyMeals(currentUser.id).then(setMyMeals)
         getPlanMealsByPlanId(planId).then(setMyPlanMeals)
         getDays().then(setDays)
@@ -81,9 +89,6 @@ export const CurrentPlan = ({ currentUser }) => {
       >
         Change Plan
       </Button>
-      <Typography variant="h3" component="div">
-        {myPlan.name}
-      </Typography>
       <Button
         variant="contained"
         color="secondary"
@@ -92,17 +97,29 @@ export const CurrentPlan = ({ currentUser }) => {
       >
         Edit Plan
       </Button>
+      <Typography variant="h4" component="div" sx={{ mx: 2 }}>
+        {myPlan.name}
+      </Typography>
+      <Typography variant="h6" component="div" sx={{ mx: 2 }}>
+        {calculateAverageDailyCalories(myPlan.planMeals)} Average Daily Calories
+      </Typography>
+
+      {/* Map days and timeSlots to get list of potential meal times */}
       <Box
         sx={{
           display: 'flex',
           flexDirection: 'column',
+          m: 2,
         }}
       >
         {days.map((day) => {
           return (
             <div key={day.id}>
-              <Typography variant="h4" component="div">
+              <Typography variant="h5" component="div">
                 {day.name}
+              </Typography>
+              <Typography variant="h7" component="div">
+                {calculateDayCalories(myPlan.planMeals, day.id)} Calories
               </Typography>
               <Box
                 key={day.id}
@@ -113,7 +130,7 @@ export const CurrentPlan = ({ currentUser }) => {
                 }}
               >
                 {timeSlots.map((timeSlot) => {
-                  const mealInfo = myPlanMeals.find(
+                  const foundPlanMeal = myPlan.planMeals?.find(
                     (planMeal) =>
                       planMeal.dayId === day.id &&
                       planMeal.timeSlotId === timeSlot.id
@@ -121,15 +138,22 @@ export const CurrentPlan = ({ currentUser }) => {
                   return (
                     <Card key={timeSlot.id} sx={{ minWidth: 200, m: 1 }}>
                       <CardContent>
-                        <Typography variant="h5" component="div">
+                        <Typography variant="h6" component="div">
                           {timeSlot.name}
                         </Typography>
-                        <Typography variant="body2">
-                          {mealInfo?.meal.name}
-                        </Typography>
-                        <Typography variant="body2">
-                          {mealInfo?.meal.calories} calories
-                        </Typography>
+                        {foundPlanMeal ? (
+                          <>
+                            <Typography variant="body2">
+                              {foundPlanMeal.meal.name}
+                            </Typography>
+                            <Typography variant="body2">
+                              {calculateMealCalories(foundPlanMeal.meal)}{' '}
+                              calories
+                            </Typography>
+                          </>
+                        ) : (
+                          ''
+                        )}
                       </CardContent>
                     </Card>
                   )

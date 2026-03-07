@@ -98,8 +98,9 @@ export const TopBar = (currentUser) => {
           onClose={handleCloseNav}
         >
           <MenuItem onClick={() => navigate('/')}>Current Plan</MenuItem>
-          <MenuItem onClick={() => navigate('/meals')}>Meals</MenuItem>
           <MenuItem onClick={() => navigate('/plans')}>Plans</MenuItem>
+          <MenuItem onClick={() => navigate('/meals')}>Meals</MenuItem>
+          <MenuItem onClick={() => navigate('/foods')}>Foods</MenuItem>
         </Menu>
         <Typography
           variant="h6"
